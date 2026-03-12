@@ -197,6 +197,8 @@
     }
 
     .card strong { display: block; margin-bottom: 8px; }
+    .card-link { display: block; transition: 0.2s ease; cursor: pointer; }
+    .card-link:hover { transform: translateY(-2px); background: rgba(255,255,255,0.10); border-color: var(--accent); }
 
     .callout {
       margin: 14px 0;
@@ -325,6 +327,7 @@
         <a class="pill" href="#weeks">8-Week Plan</a>
         <a class="pill" href="#checkpoints">Checkpoints</a>
         <a class="pill" href="#rubric">Rubric</a>
+        <a class="pill" href="#rag-lessons">RAG Lessons</a>
         <a class="pill" href="#teacher-pack">Teacher Pack</a>
       </div>
     </div>
@@ -342,6 +345,9 @@
         <a href="#student-checklist">Student Master Checklist</a>
         <a href="#checkpoints">Checkpoint Forms</a>
         <a href="#rubric">Teacher Rubric</a>
+        <a href="#starter-webpage">Starter Webpage</a>
+        <a href="#sample-ai-response">Sample AI Response</a>
+        <a href="#rag-lessons">RAG & ChromaDB Lessons</a>
         <a href="#teacher-pack">Recommended Teacher Packet</a>
       </nav>
     </aside>
@@ -780,18 +786,99 @@
         </table>
       </section>
 
+      <section id="starter-webpage" class="section">
+        <h2>Starter Webpage</h2>
+        <p class="lead">A minimal static shell that students can revise instead of building basic UI from scratch.</p>
+        <div class="callout">
+          <strong>What is included:</strong>
+          <ul>
+            <li>A page layout with header, main area, and footer</li>
+            <li>A text input field for the user question</li>
+            <li>A submit button</li>
+            <li>An answer display area</li>
+            <li>A citation/source placeholder section</li>
+          </ul>
+        </div>
+        <div class="callout warn">
+          <strong>What is NOT included:</strong>
+          <ul>
+            <li>Completed visual design or branding</li>
+            <li>Backend logic or API connections</li>
+            <li>Real AI answer generation</li>
+            <li>Final styling decisions</li>
+          </ul>
+        </div>
+        <p class="muted">Students are expected to take this shell, customize it for their target user, apply their own design decisions, and connect it to the AI answer flow they build during the MVP phase.</p>
+      </section>
+
+      <section id="sample-ai-response" class="section">
+        <h2>Sample AI Response Format</h2>
+        <p class="lead">A clear answer + citation/source structure students can build around.</p>
+        <h3>Example Response Structure</h3>
+        <div class="card" style="margin-top:14px; font-family: monospace; font-size: 14px; line-height: 1.8;">
+          <strong>User Question</strong>
+          <p>"What time does the school library close on Fridays?"</p>
+          <strong>AI Answer</strong>
+          <p>"The school library closes at 4:30 PM on Fridays during the regular school year."</p>
+          <strong>Source / Citation</strong>
+          <p>Source: Student Handbook 2025–2026, Section 5.2 — Library Hours<br>
+          Page: 23<br>
+          Confidence: High — direct match found in handbook text.</p>
+        </div>
+        <h3>Key Elements in Every Response</h3>
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card"><strong>Answer</strong>A direct, concise response to the user's question.</div>
+          <div class="card"><strong>Source</strong>The specific handbook section, page, or document the answer came from.</div>
+          <div class="card"><strong>Confidence Signal</strong>An indication of how closely the retrieved content matched the question.</div>
+        </div>
+        <div class="callout good"><strong>Design principle:</strong> Users should always be able to verify where the answer came from and judge whether to trust it.</div>
+      </section>
+
+      <section id="rag-lessons" class="section">
+        <h2>Mini-Lessons on RAG and ChromaDB</h2>
+        <p class="lead">Shared concept teaching so students do not have to guess the system logic.</p>
+
+        <h3>What is RAG?</h3>
+        <p>RAG stands for <strong>Retrieval-Augmented Generation</strong>. Instead of relying only on a language model's memory, RAG first retrieves relevant documents from a knowledge base, then uses them to generate a grounded answer.</p>
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card"><strong>1. Retrieve</strong>Search a document database (e.g. the school handbook) for chunks of text most relevant to the user's question.</div>
+          <div class="card"><strong>2. Augment</strong>Pass the retrieved text to the language model as context, alongside the user's question.</div>
+          <div class="card"><strong>3. Generate</strong>The model produces an answer grounded in the retrieved text, not just its general training data.</div>
+        </div>
+
+        <h3>Why RAG Fits the School Handbook</h3>
+        <div class="callout">
+          <ul>
+            <li>Handbook information is specific and changes each year — a general LLM would not know it.</li>
+            <li>RAG keeps answers grounded in real school documents, reducing hallucination.</li>
+            <li>RAG naturally supports citation: we know exactly which document chunk the answer came from.</li>
+          </ul>
+        </div>
+
+        <h3>What is ChromaDB?</h3>
+        <p>ChromaDB is an open-source <strong>vector database</strong>. It stores text chunks as numerical embeddings so you can find semantically similar content quickly.</p>
+        <div class="grid-2" style="margin-top:14px;">
+          <div class="card"><strong>Embedding</strong>Each handbook chunk is converted into a vector (a list of numbers) that captures its meaning.</div>
+          <div class="card"><strong>Similarity Search</strong>When a user asks a question, the question is also embedded. ChromaDB finds the chunks whose vectors are closest — meaning most relevant.</div>
+        </div>
+
+        <h3>Why Metadata Matters</h3>
+        <p>Each chunk stored in ChromaDB can carry metadata such as section title, page number, and document name. This metadata is what powers the <strong>citation and source display</strong> in the final product.</p>
+        <div class="callout good"><strong>Key takeaway:</strong> RAG = Retrieve relevant chunks → Feed them to the AI → Generate a grounded, citable answer.</div>
+      </section>
+
       <section id="teacher-pack" class="section">
         <h2>Recommended Teacher Packet</h2>
         <p class="lead">These are the core materials to prepare before launch.</p>
         <div class="grid-2">
-          <div class="card"><strong>1. Project Brief</strong>Explains theme, required stages, deliverables, scope expectations, and final presentation expectations.</div>
-          <div class="card"><strong>2. Starter Webpage</strong>A minimal static shell students can revise instead of building basic UI from scratch.</div>
-          <div class="card"><strong>3. Sample AI Response Format</strong>A clear answer + citation/source structure students can build around.</div>
-          <div class="card"><strong>4. Mini-Lessons on RAG and ChromaDB</strong>Shared concept teaching so students do not have to guess the system logic.</div>
-          <div class="card"><strong>5. Checkpoint Forms</strong>Gate-based review to manage scope and quality.</div>
-          <div class="card"><strong>6. Teacher Rubric</strong>Assessment aligned with research, design, testing, implementation, and reflection.</div>
-          <div class="card"><strong>7. Student Master Checklist</strong>Helps students stay on track and self-monitor progress.</div>
-          <div class="card"><strong>8. 8-Week Teaching Plan</strong>The pacing guide for the entire studio process.</div>
+          <a class="card card-link" href="#overview"><strong>1. Project Brief</strong>Explains theme, required stages, deliverables, scope expectations, and final presentation expectations.</a>
+          <a class="card card-link" href="#starter-webpage"><strong>2. Starter Webpage</strong>A minimal static shell students can revise instead of building basic UI from scratch.</a>
+          <a class="card card-link" href="#sample-ai-response"><strong>3. Sample AI Response Format</strong>A clear answer + citation/source structure students can build around.</a>
+          <a class="card card-link" href="#rag-lessons"><strong>4. Mini-Lessons on RAG and ChromaDB</strong>Shared concept teaching so students do not have to guess the system logic.</a>
+          <a class="card card-link" href="#checkpoints"><strong>5. Checkpoint Forms</strong>Gate-based review to manage scope and quality.</a>
+          <a class="card card-link" href="#rubric"><strong>6. Teacher Rubric</strong>Assessment aligned with research, design, testing, implementation, and reflection.</a>
+          <a class="card card-link" href="#student-checklist"><strong>7. Student Master Checklist</strong>Helps students stay on track and self-monitor progress.</a>
+          <a class="card card-link" href="#weeks"><strong>8. 8-Week Teaching Plan</strong>The pacing guide for the entire studio process.</a>
         </div>
         <div class="callout"><strong>Recommended teaching principle:</strong> Do not remove difficulty by doing the work for students. Remove unnecessary barriers so students can own the important work.</div>
       </section>
