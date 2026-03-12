@@ -100,6 +100,16 @@
 
     .pill:hover { transform: translateY(-1px); background: rgba(255,255,255,0.11); }
 
+    .pill-demo {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      padding: 12px 20px;
+      font-size: 15px;
+    }
+    .pill-demo:hover { transform: translateY(-2px); opacity: 0.92; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+
     .layout {
       display: grid;
       grid-template-columns: 280px minmax(0, 1fr);
@@ -346,6 +356,57 @@
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .rubric-table { display: block; overflow-x: auto; }
     }
+
+    @media (max-width: 680px) {
+      .container { width: calc(100% - 24px); }
+
+      .hero { padding: 24px 0 18px; }
+      .hero-card { padding: 20px 16px; border-radius: 20px; }
+      .hero p { font-size: 15px; }
+      .eyebrow { font-size: 12px; padding: 6px 10px; gap: 6px; }
+
+      .quick-links { gap: 8px; margin-top: 16px; }
+      .pill { padding: 9px 12px; font-size: 13px; }
+      .pill-demo { padding: 10px 16px; font-size: 14px; }
+
+      .sidebar { padding: 14px; border-radius: 18px; }
+      .nav a { padding: 9px 10px; font-size: 13px; }
+
+      .section { padding: 18px 14px; border-radius: 18px; }
+      .section h2 { font-size: 22px; }
+      .section h3 { font-size: 17px; }
+
+      .card { padding: 14px 12px; border-radius: 14px; }
+
+      .week { padding: 14px 12px; border-radius: 16px; }
+      .week-title { flex-direction: column; gap: 6px; }
+      .week-title h3 { font-size: 17px; }
+
+      .callout { padding: 12px 14px; border-radius: 14px; }
+
+      .checklist-group { padding: 14px 12px; border-radius: 16px; }
+      .checklist-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .checklist-header h3 { font-size: 16px; }
+      .check-item { padding: 9px 10px; border-radius: 12px; font-size: 14px; }
+
+      .rubric-table th,
+      .rubric-table td { padding: 10px 8px; font-size: 13px; }
+
+      details { padding: 12px 14px; border-radius: 14px; }
+      summary { font-size: 15px; }
+
+      .footer { padding: 16px 0 32px; font-size: 14px; }
+    }
+
+    @media (max-width: 400px) {
+      .container { width: calc(100% - 16px); }
+      .hero-card { padding: 16px 12px; }
+      h1 { font-size: 26px; }
+      .section { padding: 14px 10px; }
+      .card { padding: 12px 10px; }
+      .quick-links { flex-direction: column; }
+      .pill, .pill-demo { width: 100%; justify-content: center; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -355,6 +416,7 @@
       <h1>AI School Handbook Studio</h1>
       <p>A structured, student-centered framework for guiding middle and high school learners through an HCI-driven AI product project with research, prototyping, RAG concepts, testing, iteration, and a working MVP.</p>
       <div class="quick-links">
+        <a class="pill pill-demo" href="https://ai-school-handbook-production.up.railway.app/" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
         <a class="pill" href="#overview">Project Overview</a>
         <a class="pill" href="#weeks">8-Week Plan</a>
         <a class="pill" href="#checkpoints">Checkpoints</a>
