@@ -257,10 +257,42 @@
     }
     summary::-webkit-details-marker { display: none; }
 
+    .checklist-group {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,0.03);
+      margin-top: 16px;
+    }
+
+    .checklist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .checklist-header h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .phase-tag {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
     .checklist {
       display: grid;
       gap: 8px;
-      margin-top: 14px;
     }
 
     .check-item {
@@ -583,39 +615,100 @@
 
       <section id="student-checklist" class="section">
         <h2>Student Master Checklist</h2>
-        <p class="lead">A single master list students can use across the whole project.</p>
-        <div class="checklist">
-          <label class="check-item"><input type="checkbox"> <span>We identified a real target user.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We explained why this user needs help with the handbook.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We created at least 5 interview questions.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We interviewed at least 3 real users.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We collected at least 5 useful quotes or observations.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We identified 3 major pain points.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We selected 1 important problem to solve first.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We created 1 persona or user profile.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We listed 2 to 3 important user tasks.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We wrote a challenge statement.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We explored at least 2 solution ideas.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We explained why we chose our current idea.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We designed a homepage or start page.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We designed an answer/results page.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We designed a citation/source page or source section.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We planned how users can verify the AI answer.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We created 2 to 3 realistic test tasks.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We tested the prototype with at least 2 users.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We recorded where users became confused.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We identified 3 usability issues.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We chose the top issues to fix first.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We built a working question-and-answer flow.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>Our system can return an AI answer.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>Our system can show source/citation information.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>Users can see where the answer came from.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>Our MVP focuses on one main user task.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We tested the live version with real users.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We observed whether users trusted the answer.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We can explain how RAG helps in this project.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We can explain why citation/source is important.</span></label>
-          <label class="check-item"><input type="checkbox"> <span>We can explain what we would improve next.</span></label>
+        <p class="lead">A single master list students can use across the whole project, organized by phase.</p>
+
+        <div class="checklist-group">
+          <div class="checklist-header">
+            <h3>Phase 1 — User Research</h3>
+            <span class="phase-tag">Weeks 1–2</span>
+          </div>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox"> <span>We identified a real target user.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We explained why this user needs help with the handbook.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We created at least 5 interview questions.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We interviewed at least 3 real users.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We collected at least 5 useful quotes or observations.</span></label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <div class="checklist-header">
+            <h3>Phase 2 — Problem Definition</h3>
+            <span class="phase-tag">Week 3</span>
+          </div>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox"> <span>We identified 3 major pain points.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We selected 1 important problem to solve first.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We created 1 persona or user profile.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We listed 2 to 3 important user tasks.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We wrote a challenge statement.</span></label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <div class="checklist-header">
+            <h3>Phase 3 — Concept Design</h3>
+            <span class="phase-tag">Week 4</span>
+          </div>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox"> <span>We explored at least 2 solution ideas.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We explained why we chose our current idea.</span></label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <div class="checklist-header">
+            <h3>Phase 4 — Prototype Design</h3>
+            <span class="phase-tag">Week 5</span>
+          </div>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox"> <span>We designed a homepage or start page.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We designed an answer/results page.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We designed a citation/source page or source section.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We planned how users can verify the AI answer.</span></label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <div class="checklist-header">
+            <h3>Phase 5 — Prototype Testing & Iteration</h3>
+            <span class="phase-tag">Week 6</span>
+          </div>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox"> <span>We created 2 to 3 realistic test tasks.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We tested the prototype with at least 2 users.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We recorded where users became confused.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We identified 3 usability issues.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We chose the top issues to fix first.</span></label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <div class="checklist-header">
+            <h3>Phase 6 — MVP Build</h3>
+            <span class="phase-tag">Week 7</span>
+          </div>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox"> <span>We built a working question-and-answer flow.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>Our system can return an AI answer.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>Our system can show source/citation information.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>Users can see where the answer came from.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>Our MVP focuses on one main user task.</span></label>
+          </div>
+        </div>
+
+        <div class="checklist-group">
+          <div class="checklist-header">
+            <h3>Phase 7 — Live Testing & Final Reflection</h3>
+            <span class="phase-tag">Week 8</span>
+          </div>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox"> <span>We tested the live version with real users.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We observed whether users trusted the answer.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We can explain how RAG helps in this project.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We can explain why citation/source is important.</span></label>
+            <label class="check-item"><input type="checkbox"> <span>We can explain what we would improve next.</span></label>
+          </div>
         </div>
       </section>
 
