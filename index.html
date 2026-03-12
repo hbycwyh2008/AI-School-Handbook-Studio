@@ -344,6 +344,96 @@
       color: var(--text);
     }
 
+    .tpl {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      background: rgba(255,255,255,0.03);
+      margin-top: 16px;
+    }
+
+    .tpl-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tpl-header h3 { margin: 0; font-size: 18px; }
+
+    .tpl-field {
+      margin-top: 12px;
+    }
+
+    .tpl-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .tpl-field textarea,
+    .tpl-field input[type="text"] {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.5;
+      resize: vertical;
+    }
+
+    .tpl-field textarea:focus,
+    .tpl-field input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+    }
+
+    .tpl-field textarea { min-height: 60px; }
+    .tpl-field textarea.tall { min-height: 100px; }
+
+    .tpl-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .tpl-row-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tpl-slot {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .tpl-slot strong {
+      display: block;
+      font-size: 13px;
+      color: var(--accent-2);
+      margin-bottom: 8px;
+    }
+
+    .tpl-hint {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
     .footer {
       text-align: center;
       color: var(--muted);
@@ -396,6 +486,11 @@
       summary { font-size: 15px; }
 
       .footer { padding: 16px 0 32px; font-size: 14px; }
+
+      .tpl { padding: 14px 12px; border-radius: 16px; }
+      .tpl-header { flex-direction: column; align-items: flex-start; }
+      .tpl-row, .tpl-row-3 { grid-template-columns: 1fr; }
+      .tpl-slot { padding: 12px; }
     }
 
     @media (max-width: 400px) {
@@ -419,6 +514,7 @@
         <a class="pill pill-demo" href="https://ai-school-handbook-production.up.railway.app/" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
         <a class="pill" href="#overview">Project Overview</a>
         <a class="pill" href="#weeks">8-Week Plan</a>
+        <a class="pill" href="#templates">Templates</a>
         <a class="pill" href="#checkpoints">Checkpoints</a>
         <a class="pill" href="#rubric">Rubric</a>
         <a class="pill" href="#rag-lessons">RAG Lessons</a>
@@ -437,6 +533,7 @@
         <a href="#students-own">What Students Must Own</a>
         <a href="#weeks">8-Week Teaching Plan</a>
         <a href="#student-checklist">Student Master Checklist</a>
+        <a href="#templates">Student Templates</a>
         <a href="#checkpoints">Checkpoint Forms</a>
         <a href="#rubric">Teacher Rubric</a>
         <a href="#starter-webpage">Starter Webpage</a>
@@ -772,6 +869,237 @@
             <label class="check-item"><input type="checkbox"> <span>We can explain what we would improve next.</span></label>
           </div>
         </div>
+      </section>
+
+      <section id="templates" class="section">
+        <h2>Student Templates</h2>
+        <p class="lead">Ready-to-use templates for each project phase. Fill them in as you go — they match the checkpoints your teacher will review.</p>
+
+        <div class="tpl">
+          <div class="tpl-header">
+            <h3>Template 1 — User Research</h3>
+            <span class="phase-tag">Weeks 1–2</span>
+          </div>
+
+          <div class="tpl-field">
+            <label>Target User Group</label>
+            <input type="text" placeholder="e.g. New 9th-grade students and their parents">
+          </div>
+          <div class="tpl-field">
+            <label>Why does this user need help with the school handbook?</label>
+            <textarea placeholder="Describe the situation: what makes it hard for them to find information?"></textarea>
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Interview Questions</strong> <span class="tpl-hint">(write at least 5 open-ended questions)</span></p>
+          <div class="tpl-field"><input type="text" placeholder="Q1: e.g. When was the last time you looked for information in the handbook? What happened?"></div>
+          <div class="tpl-field"><input type="text" placeholder="Q2:"></div>
+          <div class="tpl-field"><input type="text" placeholder="Q3:"></div>
+          <div class="tpl-field"><input type="text" placeholder="Q4:"></div>
+          <div class="tpl-field"><input type="text" placeholder="Q5:"></div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Interview Notes</strong> <span class="tpl-hint">(record quotes and observations for each user)</span></p>
+          <div class="tpl-row-3">
+            <div class="tpl-slot">
+              <strong>User 1</strong>
+              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / relationship to school"></div>
+              <div class="tpl-field"><label>Key Quotes</label><textarea placeholder="Paste direct quotes..."></textarea></div>
+              <div class="tpl-field"><label>Observations</label><textarea placeholder="What did you notice about their behavior?"></textarea></div>
+            </div>
+            <div class="tpl-slot">
+              <strong>User 2</strong>
+              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / relationship to school"></div>
+              <div class="tpl-field"><label>Key Quotes</label><textarea placeholder="Paste direct quotes..."></textarea></div>
+              <div class="tpl-field"><label>Observations</label><textarea placeholder="What did you notice about their behavior?"></textarea></div>
+            </div>
+            <div class="tpl-slot">
+              <strong>User 3</strong>
+              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / relationship to school"></div>
+              <div class="tpl-field"><label>Key Quotes</label><textarea placeholder="Paste direct quotes..."></textarea></div>
+              <div class="tpl-field"><label>Observations</label><textarea placeholder="What did you notice about their behavior?"></textarea></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tpl">
+          <div class="tpl-header">
+            <h3>Template 2 — Problem Definition</h3>
+            <span class="phase-tag">Week 3</span>
+          </div>
+
+          <p style="margin-bottom:8px;"><strong>Top 3 Pain Points</strong> <span class="tpl-hint">(from your research, what frustrated users the most?)</span></p>
+          <div class="tpl-field"><input type="text" placeholder="Pain Point 1: e.g. Users cannot find lunch schedule quickly"></div>
+          <div class="tpl-field"><input type="text" placeholder="Pain Point 2:"></div>
+          <div class="tpl-field"><input type="text" placeholder="Pain Point 3:"></div>
+
+          <div class="tpl-field" style="margin-top:18px;">
+            <label>The ONE problem we will solve first</label>
+            <textarea placeholder="Which pain point is most important? Why?"></textarea>
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Persona Card</strong></p>
+          <div class="tpl-row">
+            <div class="tpl-field"><label>Name & Role</label><input type="text" placeholder="e.g. Emma, 9th-grade new student"></div>
+            <div class="tpl-field"><label>Context</label><input type="text" placeholder="e.g. Just transferred from another city"></div>
+          </div>
+          <div class="tpl-row">
+            <div class="tpl-field"><label>Goals / Wants</label><textarea placeholder="What does this person want to accomplish?"></textarea></div>
+            <div class="tpl-field"><label>Frustrations</label><textarea placeholder="What makes it hard for them right now?"></textarea></div>
+          </div>
+
+          <div class="tpl-field" style="margin-top:18px;">
+            <label>Challenge Statement</label>
+            <input type="text" placeholder="How might we help [user] to [do something] so that [benefit]?">
+            <p class="tpl-hint">Format: "How might we help [user] to [action] so that [outcome]?"</p>
+          </div>
+
+          <div class="tpl-field" style="margin-top:12px;">
+            <label>Key User Tasks (2–3 tasks your product should support)</label>
+            <textarea placeholder="Task 1: e.g. Find today's class schedule in under 10 seconds&#10;Task 2: &#10;Task 3: "></textarea>
+          </div>
+        </div>
+
+        <div class="tpl">
+          <div class="tpl-header">
+            <h3>Template 3 — Concept & Scope</h3>
+            <span class="phase-tag">Week 4</span>
+          </div>
+
+          <p style="margin-bottom:8px;"><strong>Solution Ideas</strong> <span class="tpl-hint">(compare at least 2 ideas before choosing)</span></p>
+          <div class="tpl-row">
+            <div class="tpl-slot">
+              <strong>Idea A</strong>
+              <div class="tpl-field"><label>Description</label><textarea placeholder="What would this solution look like?"></textarea></div>
+              <div class="tpl-field"><label>Pros</label><textarea placeholder="Why might this work well?"></textarea></div>
+              <div class="tpl-field"><label>Cons</label><textarea placeholder="What are the risks or downsides?"></textarea></div>
+            </div>
+            <div class="tpl-slot">
+              <strong>Idea B</strong>
+              <div class="tpl-field"><label>Description</label><textarea placeholder="What would this solution look like?"></textarea></div>
+              <div class="tpl-field"><label>Pros</label><textarea placeholder="Why might this work well?"></textarea></div>
+              <div class="tpl-field"><label>Cons</label><textarea placeholder="What are the risks or downsides?"></textarea></div>
+            </div>
+          </div>
+
+          <div class="tpl-field" style="margin-top:18px;">
+            <label>We chose Idea ___ because</label>
+            <textarea placeholder="Explain why this idea best fits your user's needs..."></textarea>
+          </div>
+
+          <div class="tpl-field">
+            <label>Main User Flow</label>
+            <textarea class="tall" placeholder="Step 1: User opens the app and sees...&#10;Step 2: User types a question about...&#10;Step 3: The system retrieves...&#10;Step 4: User sees the answer with...&#10;Step 5: User can check the source by..."></textarea>
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>MVP Scope</strong></p>
+          <div class="tpl-row">
+            <div class="tpl-field"><label>Must Have (in MVP)</label><textarea class="tall" placeholder="- Ask a question and get an answer&#10;- See which handbook section the answer came from&#10;- ..."></textarea></div>
+            <div class="tpl-field"><label>NOT in MVP (maybe later)</label><textarea class="tall" placeholder="- Multi-language support&#10;- User accounts&#10;- ..."></textarea></div>
+          </div>
+        </div>
+
+        <div class="tpl">
+          <div class="tpl-header">
+            <h3>Template 4 — Prototype Testing</h3>
+            <span class="phase-tag">Weeks 5–6</span>
+          </div>
+
+          <div class="tpl-field">
+            <label>Test Tasks (2–3 realistic things you ask testers to do)</label>
+            <textarea placeholder="Task 1: Find out what time the library closes on Friday.&#10;Task 2: Check what the dress code says about hats.&#10;Task 3: "></textarea>
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Testing Observations</strong> <span class="tpl-hint">(one card per tester)</span></p>
+          <div class="tpl-row">
+            <div class="tpl-slot">
+              <strong>Tester 1</strong>
+              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / grade / age"></div>
+              <div class="tpl-field"><label>What went well</label><textarea placeholder="What did they complete easily?"></textarea></div>
+              <div class="tpl-field"><label>Where they struggled</label><textarea placeholder="Where did they pause, look confused, or make mistakes?"></textarea></div>
+              <div class="tpl-field"><label>Did they notice citations?</label><textarea placeholder="Did they check the source? Did they understand it?"></textarea></div>
+            </div>
+            <div class="tpl-slot">
+              <strong>Tester 2</strong>
+              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / grade / age"></div>
+              <div class="tpl-field"><label>What went well</label><textarea placeholder="What did they complete easily?"></textarea></div>
+              <div class="tpl-field"><label>Where they struggled</label><textarea placeholder="Where did they pause, look confused, or make mistakes?"></textarea></div>
+              <div class="tpl-field"><label>Did they notice citations?</label><textarea placeholder="Did they check the source? Did they understand it?"></textarea></div>
+            </div>
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Usability Issues</strong></p>
+          <div class="tpl-field"><input type="text" placeholder="Issue 1 (most critical): e.g. Users didn't see the source section at all"></div>
+          <div class="tpl-field"><input type="text" placeholder="Issue 2:"></div>
+          <div class="tpl-field"><input type="text" placeholder="Issue 3:"></div>
+          <div class="tpl-field" style="margin-top:12px;">
+            <label>What we will fix before building the MVP</label>
+            <textarea placeholder="Describe the changes you plan to make based on testing..."></textarea>
+          </div>
+        </div>
+
+        <div class="tpl">
+          <div class="tpl-header">
+            <h3>Template 5 — MVP Build Plan</h3>
+            <span class="phase-tag">Week 7</span>
+          </div>
+
+          <div class="tpl-field">
+            <label>The ONE main thing our MVP must do well</label>
+            <input type="text" placeholder="e.g. Answer handbook questions about daily schedules with source citations">
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>System Architecture</strong> <span class="tpl-hint">(describe each part in plain language)</span></p>
+          <div class="tpl-row">
+            <div class="tpl-field"><label>Frontend (what the user sees)</label><textarea placeholder="e.g. A search page with a question box, an answer card, and a sources list below it"></textarea></div>
+            <div class="tpl-field"><label>Backend (what happens behind the scenes)</label><textarea placeholder="e.g. Takes the question, searches ChromaDB for matching handbook chunks, sends them to GPT, returns the answer"></textarea></div>
+          </div>
+          <div class="tpl-row" style="margin-top:12px;">
+            <div class="tpl-field"><label>Answer Flow</label><textarea placeholder="User question → embed question → search ChromaDB → get top 3 chunks → send to LLM with prompt → return answer"></textarea></div>
+            <div class="tpl-field"><label>Citation Flow</label><textarea placeholder="Each chunk has metadata (section, page) → display metadata under the answer → user can click to see original text"></textarea></div>
+          </div>
+
+          <div class="tpl-field" style="margin-top:18px;">
+            <label>Why is RAG useful for this project?</label>
+            <textarea placeholder="Explain in your own words why RAG is a good fit for a school handbook assistant..."></textarea>
+          </div>
+        </div>
+
+        <div class="tpl">
+          <div class="tpl-header">
+            <h3>Template 6 — Live Testing & Final Reflection</h3>
+            <span class="phase-tag">Week 8</span>
+          </div>
+
+          <div class="tpl-field">
+            <label>MVP Link or Location</label>
+            <input type="text" placeholder="e.g. https://our-project.railway.app or classroom demo on laptop #3">
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Live Test Results</strong></p>
+          <div class="tpl-row">
+            <div class="tpl-slot">
+              <strong>Tester 1</strong>
+              <div class="tpl-field"><label>Task</label><input type="text" placeholder="What did you ask them to do?"></div>
+              <div class="tpl-field"><label>Success?</label><input type="text" placeholder="Yes / Partially / No"></div>
+              <div class="tpl-field"><label>Did they trust the answer?</label><textarea placeholder="Why or why not?"></textarea></div>
+              <div class="tpl-field"><label>Did they use citations?</label><textarea placeholder="Did they check the source?"></textarea></div>
+            </div>
+            <div class="tpl-slot">
+              <strong>Tester 2</strong>
+              <div class="tpl-field"><label>Task</label><input type="text" placeholder="What did you ask them to do?"></div>
+              <div class="tpl-field"><label>Success?</label><input type="text" placeholder="Yes / Partially / No"></div>
+              <div class="tpl-field"><label>Did they trust the answer?</label><textarea placeholder="Why or why not?"></textarea></div>
+              <div class="tpl-field"><label>Did they use citations?</label><textarea placeholder="Did they check the source?"></textarea></div>
+            </div>
+          </div>
+
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Final Reflection</strong></p>
+          <div class="tpl-field"><label>What is our product and who is it for?</label><textarea placeholder="One paragraph summary..."></textarea></div>
+          <div class="tpl-field"><label>How did our research change our design?</label><textarea placeholder="Give a specific example of a decision that changed because of what you learned from users..."></textarea></div>
+          <div class="tpl-field"><label>Why do citations matter in an AI product?</label><textarea placeholder="Explain why showing the source is important for user trust..."></textarea></div>
+          <div class="tpl-field"><label>What would we improve if we had 2 more weeks?</label><textarea placeholder="Be specific about what you'd change and why..."></textarea></div>
+        </div>
+
+        <div class="callout good"><strong>Tip:</strong> You can fill in these templates directly on this page, or copy the questions into your own document. Either way, have your answers ready before each checkpoint review.</div>
       </section>
 
       <section id="checkpoints" class="section">
