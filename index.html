@@ -536,7 +536,7 @@
         <a href="#templates">Student Templates</a>
         <a href="#checkpoints">Checkpoint Forms</a>
         <a href="#rubric">Teacher Rubric</a>
-        <a href="#starter-webpage">Starter Webpage</a>
+        <a href="#starter-webpage">Starter Code</a>
         <a href="#sample-ai-response">Sample AI Response</a>
         <a href="#rag-lessons">RAG & ChromaDB Lessons</a>
         <a href="#teacher-pack">Recommended Teacher Packet</a>
@@ -1270,28 +1270,69 @@
       </section>
 
       <section id="starter-webpage" class="section">
-        <h2>Starter Webpage</h2>
-        <p class="lead">A minimal static shell that students can revise instead of building basic UI from scratch.</p>
-        <div class="callout">
-          <strong>What is included:</strong>
-          <ul>
-            <li>A page layout with header, main area, and footer</li>
-            <li>A text input field for the user question</li>
-            <li>A submit button</li>
-            <li>An answer display area</li>
-            <li>A citation/source placeholder section</li>
-          </ul>
+        <h2>Starter Code</h2>
+        <p class="lead">A minimal working codebase students can run, understand, and customize. Includes frontend, backend, and RAG pipeline.</p>
+
+        <div class="callout good">
+          <strong>Download:</strong> The complete starter code is in the <a href="https://github.com/hbycwyh2008/AI-School-Handbook-Studio/tree/main/starter-code" target="_blank" style="color:var(--accent-2); text-decoration:underline;">starter-code/</a> folder of this repository.
         </div>
+
+        <h3>Tech Stack</h3>
+        <div class="grid-2" style="margin-top:14px;">
+          <div class="card"><strong>Frontend</strong>HTML + Bootstrap 5 + Vanilla JavaScript</div>
+          <div class="card"><strong>Backend</strong>Node.js + Express</div>
+          <div class="card"><strong>Vector Database</strong>ChromaDB — stores handbook chunks and searches by meaning</div>
+          <div class="card"><strong>AI</strong>OpenAI API — GPT-4o-mini for answers, text-embedding-3-small for vectors</div>
+        </div>
+
+        <h3>File Structure</h3>
+        <div class="card" style="margin-top:14px; font-family: monospace; font-size: 14px; line-height: 2;">
+          <strong style="font-family: inherit;">starter-code/</strong>
+          <p style="margin:4px 0 0 16px;">
+            public/index.html &nbsp;← Frontend page (Bootstrap UI)<br>
+            public/app.js &nbsp;&nbsp;&nbsp;&nbsp;← Frontend logic (Vanilla JS, fetch API)<br>
+            server.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Express server + /api/ingest + /api/ask<br>
+            ingest.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Script to chunk a .txt handbook into ChromaDB<br>
+            package.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Dependencies<br>
+            .env.example &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Environment variables template
+          </p>
+        </div>
+
+        <h3>RAG Flow in the Code</h3>
+        <div class="card" style="margin-top:14px; font-family: monospace; font-size: 14px; line-height: 2.2; text-align:center;">
+          User types a question<br>
+          &darr;<br>
+          ChromaDB embeds the question (OpenAI Embeddings)<br>
+          &darr;<br>
+          ChromaDB finds the 3 most similar handbook chunks<br>
+          &darr;<br>
+          Express sends chunks + question to GPT-4o-mini<br>
+          &darr;<br>
+          Answer + sources returned to the browser
+        </div>
+
+        <h3>Quick Start (6 steps)</h3>
+        <div class="checklist" style="margin-top:14px;">
+          <div class="check-item"><span><strong>1.</strong> Install <a href="https://nodejs.org" target="_blank" style="color:var(--accent-2)">Node.js</a> and <a href="https://python.org" target="_blank" style="color:var(--accent-2)">Python</a></span></div>
+          <div class="check-item"><span><strong>2.</strong> Install ChromaDB: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">pip install chromadb</code></span></div>
+          <div class="check-item"><span><strong>3.</strong> Start ChromaDB: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">chroma run --path ./chroma_data</code></span></div>
+          <div class="check-item"><span><strong>4.</strong> In a new terminal: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">cd starter-code && npm install && cp .env.example .env</code> → edit .env with your OpenAI key</span></div>
+          <div class="check-item"><span><strong>5.</strong> Load handbook: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">node ingest.js handbook.txt</code></span></div>
+          <div class="check-item"><span><strong>6.</strong> Start server: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">npm start</code> → open <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">http://localhost:3000</code></span></div>
+        </div>
+
+        <h3>What Students Should Customize</h3>
         <div class="callout warn">
-          <strong>What is NOT included:</strong>
+          <strong>This is a shell, not a finished product.</strong> Students must make their own decisions about:
           <ul>
-            <li>Completed visual design or branding</li>
-            <li>Backend logic or API connections</li>
-            <li>Real AI answer generation</li>
-            <li>Final styling decisions</li>
+            <li>Page design and layout for their target user</li>
+            <li>How to split the handbook into smarter chunks (detect sections / headers)</li>
+            <li>How to display citations and source information</li>
+            <li>How to handle "I don't know" answers</li>
+            <li>Error handling and loading states</li>
+            <li>Final deployment to Railway, Render, or another platform</li>
           </ul>
         </div>
-        <p class="muted">Students are expected to take this shell, customize it for their target user, apply their own design decisions, and connect it to the AI answer flow they build during the MVP phase.</p>
       </section>
 
       <section id="sample-ai-response" class="section">
@@ -1355,7 +1396,7 @@
         <p class="lead">These are the core materials to prepare before launch.</p>
         <div class="grid-2">
           <a class="card card-link" href="#overview"><strong>1. Project Brief</strong>Explains theme, required stages, deliverables, scope expectations, and final presentation expectations.</a>
-          <a class="card card-link" href="#starter-webpage"><strong>2. Starter Webpage</strong>A minimal static shell students can revise instead of building basic UI from scratch.</a>
+          <a class="card card-link" href="#starter-webpage"><strong>2. Starter Code</strong>A minimal working codebase (Express + ChromaDB + OpenAI) students can run and customize.</a>
           <a class="card card-link" href="#sample-ai-response"><strong>3. Sample AI Response Format</strong>A clear answer + citation/source structure students can build around.</a>
           <a class="card card-link" href="#rag-lessons"><strong>4. Mini-Lessons on RAG and ChromaDB</strong>Shared concept teaching so students do not have to guess the system logic.</a>
           <a class="card card-link" href="#checkpoints"><strong>5. Checkpoint Forms</strong>Gate-based review to manage scope and quality.</a>
