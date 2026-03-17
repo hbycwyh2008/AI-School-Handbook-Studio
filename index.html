@@ -153,6 +153,12 @@
       background: rgba(255,255,255,0.06);
       border-color: var(--line);
     }
+    .nav a.active {
+      color: var(--text);
+      background: rgba(139,92,246,0.14);
+      border-color: rgba(139,92,246,0.35);
+      font-weight: 600;
+    }
 
     .nav .nav-divider {
       height: 1px;
@@ -1909,6 +1915,45 @@
     }
 
     updateAllProgress();
+  })();
+  </script>
+
+  <script>
+  // Scrollspy: highlight active nav link based on visible section
+  (function() {
+    var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+    var sections = [];
+    navLinks.forEach(function(link) {
+      var id = link.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) sections.push({ id: id, el: el, link: link });
+    });
+
+    function onScroll() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var windowH = window.innerHeight;
+      var best = null;
+      var bestTop = -Infinity;
+
+      sections.forEach(function(s) {
+        var rect = s.el.getBoundingClientRect();
+        var top = rect.top;
+        // Section is visible and closest to the top of viewport
+        if (top <= windowH * 0.35 && top > bestTop) {
+          bestTop = top;
+          best = s;
+        }
+      });
+
+      // Fallback: if nothing qualifies (at very top), pick first section
+      if (!best && sections.length) best = sections[0];
+
+      navLinks.forEach(function(l) { l.classList.remove('active'); });
+      if (best) best.link.classList.add('active');
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   })();
   </script>
 </body>
