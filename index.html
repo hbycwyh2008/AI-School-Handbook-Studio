@@ -447,19 +447,221 @@
       padding-left: 0;
       list-style: none;
     }
-    .video-list li {
-      padding: 8px 12px;
+    .video-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
       border-radius: 12px;
       background: rgba(139,92,246,0.08);
       border: 1px solid rgba(139,92,246,0.18);
       font-size: 14px;
       margin: 0;
+      transition: 0.2s ease;
+      cursor: pointer;
     }
-    .video-list li::before {
-      content: "▶ ";
+    .video-item:hover {
+      background: rgba(139,92,246,0.16);
+      border-color: rgba(139,92,246,0.35);
+      transform: translateX(4px);
+    }
+    .video-item.watched {
+      background: rgba(52,211,153,0.08);
+      border-color: rgba(52,211,153,0.25);
+    }
+    .video-item .v-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(139,92,246,0.4);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: 0.2s ease;
+    }
+    .video-item.watched .v-check {
+      background: var(--good);
+      border-color: var(--good);
+      color: #0b1020;
+    }
+    .video-item .v-play {
       color: var(--accent);
       font-size: 11px;
+      flex-shrink: 0;
+      transition: 0.2s ease;
     }
+    .video-item:hover .v-play { transform: scale(1.2); }
+    .video-item.watched .v-play { color: var(--good); }
+    .video-item .v-title { flex: 1; }
+    .video-item .v-link {
+      font-size: 12px;
+      color: var(--accent-2);
+      opacity: 0;
+      transition: 0.2s ease;
+      text-decoration: underline;
+    }
+    .video-item:hover .v-link { opacity: 1; }
+
+    .video-progress {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+    }
+    .video-progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .video-progress-label .vp-count { font-weight: 700; color: var(--text); }
+    .video-progress-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.1);
+      overflow: hidden;
+    }
+    .video-progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.4s ease;
+    }
+    .video-progress.complete .video-progress-fill {
+      background: linear-gradient(90deg, var(--good), var(--accent-2));
+    }
+    .video-progress.complete .video-progress-label { color: var(--good); }
+
+    .task-gate {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(251,191,36,0.3);
+      background: rgba(251,191,36,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--warn);
+      transition: 0.3s ease;
+    }
+    .task-gate.unlocked {
+      border-color: rgba(52,211,153,0.3);
+      background: rgba(52,211,153,0.06);
+      color: var(--good);
+    }
+    .task-gate-icon { font-size: 18px; }
+
+    .video-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .video-modal-overlay.active { display: flex; }
+    .video-modal {
+      background: #111827;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      width: min(900px, calc(100% - 40px));
+      max-height: calc(100vh - 60px);
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    }
+    .video-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .video-modal-header h3 { margin: 0; font-size: 16px; }
+    .video-modal-close {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s ease;
+    }
+    .video-modal-close:hover { background: rgba(255,255,255,0.2); }
+    .video-modal-body {
+      padding: 20px;
+    }
+    .video-modal-body .video-embed {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      background: #000;
+      border: none;
+    }
+    .video-modal-body .video-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 2px dashed var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      gap: 8px;
+    }
+    .video-placeholder-icon { font-size: 48px; opacity: 0.5; }
+    .video-modal-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      gap: 12px;
+    }
+    .btn-mark-watched {
+      padding: 10px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+    .btn-mark-watched:hover { transform: translateY(-1px); opacity: 0.9; }
+    .btn-mark-watched.done {
+      background: var(--good);
+      color: #0b1020;
+    }
+    .btn-open-external {
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-open-external:hover { background: rgba(255,255,255,0.14); }
 
     .output-box {
       margin-top: 14px;
@@ -685,18 +887,46 @@
 
         <h3>What to Watch</h3>
         <p class="muted">CS6750 HCI &ndash; 3.3 Needfinding and Requirements Gathering:</p>
-        <ul class="video-list">
-          <li>3.3.1 Introduction to Needfinding</li>
-          <li>3.3.3 The Problem Space</li>
-          <li>3.3.4 User Types</li>
-          <li>3.3.6 Naturalistic Observation</li>
-          <li>3.3.8 Participant Observation</li>
-          <li>3.3.11 Apprenticeship and Ethnography</li>
-          <li>3.3.12 Interviews and Focus Group</li>
-          <li>3.3.15 Think-aloud</li>
-          <li>3.3.16 Surveys</li>
-          <li>3.3.20 Other Data Gathering Methods</li>
-        </ul>
+        <div class="video-list" data-task="task1">
+          <div class="video-item" data-video-id="3.3.1" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.1 Introduction to Needfinding</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.3" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.3 The Problem Space</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.4" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.4 User Types</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.6" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.6 Naturalistic Observation</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.8" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.8 Participant Observation</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.11" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.11 Apprenticeship and Ethnography</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.12" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.12 Interviews and Focus Group</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.15" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.15 Think-aloud</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.16" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.16 Surveys</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.20" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.20 Other Data Gathering Methods</span><span class="v-link">Watch</span>
+          </div>
+        </div>
+        <div class="video-progress" data-task="task1">
+          <div class="video-progress-label"><span>Video progress</span><span class="vp-count">0 / 10</span></div>
+          <div class="video-progress-bar"><div class="video-progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="task-gate" data-task="task1">
+          <span class="task-gate-icon">&#128274;</span>
+          <span>Watch all videos above to unlock the task steps below</span>
+        </div>
 
         <h3>What to Learn</h3>
         <h4>A. How to explore the problem space</h4>
@@ -762,13 +992,31 @@
 
         <h3>What to Watch</h3>
         <p class="muted">CS6750 HCI &ndash; 3.3 Needfinding and Requirements Gathering:</p>
-        <ul class="video-list">
-          <li>3.3.13 &ndash; 5 Tips: Interviews</li>
-          <li>3.3.17 &ndash; 5 Tips: Surveys</li>
-          <li>3.3.18 &ndash; Writing Good Survey Questions</li>
-          <li>3.3.25 &ndash; Representing the Need</li>
-          <li>3.3.3 &ndash; Defining the Requirement</li>
-        </ul>
+        <div class="video-list" data-task="task2">
+          <div class="video-item" data-video-id="3.3.13" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.13 &ndash; 5 Tips: Interviews</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.17" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.17 &ndash; 5 Tips: Surveys</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.18" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.18 &ndash; Writing Good Survey Questions</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.25" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.25 &ndash; Representing the Need</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.3.3-req" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">3.3.3 &ndash; Defining the Requirement</span><span class="v-link">Watch</span>
+          </div>
+        </div>
+        <div class="video-progress" data-task="task2">
+          <div class="video-progress-label"><span>Video progress</span><span class="vp-count">0 / 5</span></div>
+          <div class="video-progress-bar"><div class="video-progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="task-gate" data-task="task2">
+          <span class="task-gate-icon">&#128274;</span>
+          <span>Watch all videos above to unlock the task steps below</span>
+        </div>
 
         <h3>What to Learn</h3>
         <ul>
@@ -815,15 +1063,37 @@
         <h2>Task 3 &mdash; Prototyping</h2>
 
         <h3>What to Watch</h3>
-        <ul class="video-list">
-          <li>CS6750 HCI &ndash; Lesson 3.4: Design Alternatives</li>
-          <li>CS6750 HCI &ndash; Lesson 3.5: Prototyping</li>
-          <li>2.5.5 Simplicity</li>
-          <li>2.5.6 Affordance</li>
-          <li>2.5.10 Perceptibility</li>
-          <li>2.5.11 Consistency</li>
-          <li>2.5.17 Constraints</li>
-        </ul>
+        <div class="video-list" data-task="task3">
+          <div class="video-item" data-video-id="3.4" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">CS6750 HCI &ndash; Lesson 3.4: Design Alternatives</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="3.5" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">CS6750 HCI &ndash; Lesson 3.5: Prototyping</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="2.5.5" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">2.5.5 Simplicity</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="2.5.6" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">2.5.6 Affordance</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="2.5.10" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">2.5.10 Perceptibility</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="2.5.11" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">2.5.11 Consistency</span><span class="v-link">Watch</span>
+          </div>
+          <div class="video-item" data-video-id="2.5.17" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">2.5.17 Constraints</span><span class="v-link">Watch</span>
+          </div>
+        </div>
+        <div class="video-progress" data-task="task3">
+          <div class="video-progress-label"><span>Video progress</span><span class="vp-count">0 / 7</span></div>
+          <div class="video-progress-bar"><div class="video-progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="task-gate" data-task="task3">
+          <span class="task-gate-icon">&#128274;</span>
+          <span>Watch all videos above to unlock the task steps below</span>
+        </div>
 
         <h3>What to Learn</h3>
         <ul>
@@ -874,9 +1144,19 @@
         <h2>Task 4 &mdash; Evaluation</h2>
 
         <h3>What to Watch</h3>
-        <ul class="video-list">
-          <li>CS6750 HCI &ndash; Lesson 3.6: Evaluation</li>
-        </ul>
+        <div class="video-list" data-task="task4">
+          <div class="video-item" data-video-id="3.6" data-video-url="" data-embed-url="">
+            <span class="v-check"></span><span class="v-play">&#9654;</span><span class="v-title">CS6750 HCI &ndash; Lesson 3.6: Evaluation</span><span class="v-link">Watch</span>
+          </div>
+        </div>
+        <div class="video-progress" data-task="task4">
+          <div class="video-progress-label"><span>Video progress</span><span class="vp-count">0 / 1</span></div>
+          <div class="video-progress-bar"><div class="video-progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="task-gate" data-task="task4">
+          <span class="task-gate-icon">&#128274;</span>
+          <span>Watch the video above to unlock the task steps below</span>
+        </div>
 
         <h3>What to Learn</h3>
         <ul>
@@ -1272,5 +1552,148 @@
   <div class="container footer">
     Built as a single-file static webpage for direct use in a browser, school intranet, GitHub Pages, or a local teaching folder.
   </div>
+
+  <!-- Video Modal -->
+  <div class="video-modal-overlay" id="videoModal">
+    <div class="video-modal">
+      <div class="video-modal-header">
+        <h3 id="videoModalTitle">Video</h3>
+        <button class="video-modal-close" id="videoModalClose">&times;</button>
+      </div>
+      <div class="video-modal-body">
+        <div id="videoModalContent"></div>
+        <div class="video-modal-actions">
+          <a class="btn-open-external" id="videoModalExternal" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">Open in new tab &#8599;</a>
+          <button class="btn-mark-watched" id="videoModalMark">Mark as Watched &#10003;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var STORAGE_KEY = 'aishb-video-progress';
+    var watched = {};
+    try { watched = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) {}
+    function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(watched)); } catch(e) {} }
+
+    var currentVideoId = null;
+
+    var modal = document.getElementById('videoModal');
+    var modalTitle = document.getElementById('videoModalTitle');
+    var modalContent = document.getElementById('videoModalContent');
+    var modalClose = document.getElementById('videoModalClose');
+    var modalExternal = document.getElementById('videoModalExternal');
+    var modalMark = document.getElementById('videoModalMark');
+
+    function openModal(item) {
+      var videoId = item.getAttribute('data-video-id');
+      var embedUrl = item.getAttribute('data-embed-url');
+      var videoUrl = item.getAttribute('data-video-url');
+      var title = item.querySelector('.v-title').textContent;
+
+      currentVideoId = videoId;
+      modalTitle.textContent = title;
+
+      if (embedUrl) {
+        modalContent.innerHTML = '<iframe class="video-embed" src="' + embedUrl + '" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+      } else if (videoUrl) {
+        modalContent.innerHTML = '<div class="video-placeholder"><span class="video-placeholder-icon">&#127909;</span><span>Click "Open in new tab" to watch this video</span></div>';
+      } else {
+        modalContent.innerHTML = '<div class="video-placeholder"><span class="video-placeholder-icon">&#127909;</span><span>Video link coming soon</span><span style="font-size:13px;opacity:0.7;">The URL for this video has not been configured yet.</span></div>';
+      }
+
+      if (videoUrl) {
+        modalExternal.href = videoUrl;
+        modalExternal.style.display = '';
+      } else {
+        modalExternal.style.display = 'none';
+      }
+
+      if (watched[videoId]) {
+        modalMark.textContent = 'Watched \u2713';
+        modalMark.classList.add('done');
+      } else {
+        modalMark.textContent = 'Mark as Watched \u2713';
+        modalMark.classList.remove('done');
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      modalContent.innerHTML = '';
+      currentVideoId = null;
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    modalMark.addEventListener('click', function() {
+      if (!currentVideoId) return;
+      watched[currentVideoId] = true;
+      save();
+      modalMark.textContent = 'Watched \u2713';
+      modalMark.classList.add('done');
+      updateAllProgress();
+    });
+
+    document.querySelectorAll('.video-item').forEach(function(item) {
+      item.addEventListener('click', function() { openModal(item); });
+    });
+
+    function updateAllProgress() {
+      document.querySelectorAll('.video-list[data-task]').forEach(function(list) {
+        var task = list.getAttribute('data-task');
+        var items = list.querySelectorAll('.video-item');
+        var total = items.length;
+        var done = 0;
+        items.forEach(function(item) {
+          var vid = item.getAttribute('data-video-id');
+          if (watched[vid]) {
+            item.classList.add('watched');
+            item.querySelector('.v-check').textContent = '\u2713';
+            done++;
+          } else {
+            item.classList.remove('watched');
+            item.querySelector('.v-check').textContent = '';
+          }
+        });
+
+        var prog = document.querySelector('.video-progress[data-task="' + task + '"]');
+        if (prog) {
+          var pct = total > 0 ? Math.round(done / total * 100) : 0;
+          prog.querySelector('.vp-count').textContent = done + ' / ' + total;
+          prog.querySelector('.video-progress-fill').style.width = pct + '%';
+          if (done === total && total > 0) {
+            prog.classList.add('complete');
+          } else {
+            prog.classList.remove('complete');
+          }
+        }
+
+        var gate = document.querySelector('.task-gate[data-task="' + task + '"]');
+        if (gate) {
+          if (done === total && total > 0) {
+            gate.classList.add('unlocked');
+            gate.querySelector('.task-gate-icon').innerHTML = '&#128275;';
+            gate.querySelector('span:last-child').textContent = 'All videos watched — proceed with the tasks below!';
+          } else {
+            gate.classList.remove('unlocked');
+            gate.querySelector('.task-gate-icon').innerHTML = '&#128274;';
+            var remaining = total - done;
+            gate.querySelector('span:last-child').textContent = remaining + ' video' + (remaining !== 1 ? 's' : '') + ' remaining — watch ' + (remaining === total ? 'all' : 'the rest') + ' to unlock the task steps';
+          }
+        }
+      });
+    }
+
+    updateAllProgress();
+  })();
+  </script>
 </body>
 </html>
