@@ -831,7 +831,7 @@
 
         <h3>Two Stages</h3>
         <div class="grid-2" style="margin-top:10px;">
-          <div class="card" style="border-color:rgba(139,92,246,0.3);">
+          <div class="card" style="border-color:rgba(139,92,246,0.3);" data-i18n-block="overview_stage1_card">
             <strong style="color:var(--accent);">Stage 1 &mdash; HCI Design (Weeks 1&ndash;4)</strong>
             <p>Understand real users, collect evidence, design and test a prototype.</p>
             <ul style="margin-top:8px;font-size:14px;">
@@ -843,7 +843,7 @@
             </ul>
             <p class="muted" style="font-size:13px;margin-top:8px;">Output: a tested, revised prototype grounded in user evidence</p>
           </div>
-          <div class="card" style="border-color:rgba(34,211,238,0.3);">
+          <div class="card" style="border-color:rgba(34,211,238,0.3);" data-i18n-block="overview_stage2_card">
             <strong style="color:var(--accent-2);">Stage 2 &mdash; Technical Build (Weeks 5&ndash;8)</strong>
             <p>Learn RAG &amp; ChromaDB, build a working web app, test and ship.</p>
             <ul style="margin-top:8px;font-size:14px;">
@@ -855,12 +855,12 @@
           </div>
         </div>
 
-        <div class="callout good" style="margin-top:18px;">
+        <div class="callout good" style="margin-top:18px;" data-i18n-block="overview_track">
           <strong>Student Tasks Track:</strong> Download the complete task guide with videos, learning objectives, workflow, and evaluation criteria for all HCI tasks.<br>
           <a href="HCI_Track_Student_Tasks.pdf" download style="color:var(--accent-2);text-decoration:underline;font-weight:600;">Download HCI Student Tasks Track (PDF) &darr;</a>
         </div>
 
-        <div class="callout warn" style="margin-top:10px;">
+        <div class="callout warn" style="margin-top:10px;" data-i18n-block="overview_warn">
           <strong>Do not start with coding.</strong> Stage 1 comes first. Start by understanding the users, the problem space, the most suitable needfinding methods, and what makes the system trustworthy. Your prototype should come from evidence, not assumptions. Code comes in Stage 2.
         </div>
       </section>
@@ -870,14 +870,14 @@
         <h2>Weekly Report Requirement</h2>
         <p class="lead">Each week, you must submit a short written report documenting your progress, decisions, and reflections.</p>
 
-        <div class="callout good">
+        <div class="callout good" data-i18n-block="reports_format">
           <strong>Format:</strong> Use the <strong>JDF (Joyner Document Format)</strong> template in <strong>Overleaf</strong>.<br>
           Register for free: <a href="https://www.overleaf.com" target="_blank" style="color:var(--accent-2); text-decoration:underline;">overleaf.com</a><br>
           JDF template: <a href="https://www.overleaf.com/latex/templates/jdf-for-cs-6750/vkqbhfrgxtgs" target="_blank" style="color:var(--accent-2); text-decoration:underline;">JDF for CS 6750</a>
         </div>
 
         <h3>Your report should include</h3>
-        <ul>
+        <ul data-i18n-block="reports_ul">
           <li>What you worked on this week</li>
           <li>Key decisions you made and why</li>
           <li>Any challenges or open questions</li>
@@ -891,11 +891,11 @@
         <p class="lead">Two stages, eight weeks. Design first, then build.</p>
 
         <h3 id="stage1" style="color:var(--accent);margin-top:8px;">Stage 1 &mdash; HCI Design (Weeks 1&ndash;4)</h3>
-        <p class="muted">Understand users, collect evidence, design and test a prototype.</p>
+        <p class="muted" data-i18n-block="workflow_s1_desc">Understand users, collect evidence, design and test a prototype.</p>
 
         <div class="week">
           <div class="week-title"><h3>Week 1 &mdash; Understand and Plan</h3><span>Task 1: Needfinding</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week1">
             <li>Study the Needfinding videos in class (3.3.1, 3.3.3, 3.3.4, 3.3.6, 3.3.8, 3.3.11, 3.3.12, 3.3.15, 3.3.16, 3.3.20)</li>
             <li>Choose your primary user group</li>
             <li>Investigate 2&ndash;3 existing solutions</li>
@@ -907,7 +907,7 @@
 
         <div class="week">
           <div class="week-title"><h3>Week 2 &mdash; Design, Collect, and Analyze</h3><span>Task 2: Data Collection</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week2">
             <li>Study the data collection and need representation videos in class (3.3.13, 3.3.17, 3.3.18, 3.3.25, 3.3.3)</li>
             <li>Draft your survey or interview guide</li>
             <li>Pilot and revise your questions</li>
@@ -920,7 +920,7 @@
 
         <div class="week">
           <div class="week-title"><h3>Week 3 &mdash; Prototype and Evaluate</h3><span>Tasks 3 &amp; 4: Prototyping + Evaluation</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week3">
             <li>Study the Design Alternatives, Prototyping, and Design Principles videos in class</li>
             <li>Create a simple prototype (mockup, not code)</li>
             <li>Prepare evaluation tasks</li>
@@ -932,7 +932,7 @@
 
         <div class="week">
           <div class="week-title"><h3>Week 4 &mdash; Iterate and Reflect</h3><span>Task 5: Iteration</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week4">
             <li>Review the most important problems</li>
             <li>Revise the design</li>
             <li>Test the updated version again, if possible</li>
@@ -941,16 +941,16 @@
           </ul>
         </div>
 
-        <div class="callout good" style="margin-top:6px;">
+        <div class="callout good" style="margin-top:6px;" data-i18n-block="workflow_complete">
           <strong>Stage 1 complete.</strong> You should now have a tested, revised prototype backed by real user evidence. Time to build it.
         </div>
 
         <h3 id="stage2" style="color:var(--accent-2);margin-top:24px;">Stage 2 &mdash; Technical Build (Weeks 5&ndash;8)</h3>
-        <p class="muted">Learn RAG and ChromaDB, build the web app, test with real users, and ship.</p>
+        <p class="muted" data-i18n-block="workflow_s2_desc">Learn RAG and ChromaDB, build the web app, test with real users, and ship.</p>
 
         <div class="week">
           <div class="week-title"><h3>Week 5 &mdash; Learn RAG &amp; ChromaDB</h3><span>Task 6: RAG Concepts</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week5">
             <li>Learn what RAG (Retrieval-Augmented Generation) is and why it fits this project</li>
             <li>Learn what ChromaDB is and how vector search works</li>
             <li>Understand the full pipeline: embed &rarr; store &rarr; retrieve &rarr; generate &rarr; cite</li>
@@ -963,7 +963,7 @@
 
         <div class="week">
           <div class="week-title"><h3>Week 6 &mdash; Build the Frontend</h3><span>Task 7: MVP Build (Part 1)</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week6">
             <li>Translate your Stage 1 prototype into a real HTML/CSS interface</li>
             <li>Implement the question input, answer display, and citation/source section</li>
             <li>Connect the frontend to the backend API (/api/ask)</li>
@@ -975,7 +975,7 @@
 
         <div class="week">
           <div class="week-title"><h3>Week 7 &mdash; Build the Backend &amp; Deploy</h3><span>Task 7: MVP Build (Part 2)</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week7">
             <li>Customize the chunking strategy for your specific handbook</li>
             <li>Tune the system prompt for better answer quality</li>
             <li>Implement the handbook upload/ingest flow</li>
@@ -987,7 +987,7 @@
 
         <div class="week">
           <div class="week-title"><h3>Week 8 &mdash; Live Testing &amp; Final Presentation</h3><span>Task 8: Ship &amp; Present</span></div>
-          <ul>
+          <ul data-i18n-block="workflow_week8">
             <li>Test the live MVP with real users from your target group</li>
             <li>Record: Can they find answers? Do they trust the AI? Do they check citations?</li>
             <li>Identify remaining problems and make final improvements</li>
@@ -1042,7 +1042,7 @@
         </div>
         <div class="task-gate" data-task="task1">
           <span class="task-gate-icon">&#128274;</span>
-          <span>Complete all videos above to unlock the task steps below</span>
+          <span data-i18n-block="task1_gate">Complete all videos above to unlock the task steps below</span>
         </div>
 
         <h3>What to Learn</h3>
@@ -1132,7 +1132,7 @@
         </div>
         <div class="task-gate" data-task="task2">
           <span class="task-gate-icon">&#128274;</span>
-          <span>Complete all videos above to unlock the task steps below</span>
+          <span data-i18n-block="task1_gate">Complete all videos above to unlock the task steps below</span>
         </div>
 
         <h3>What to Learn</h3>
@@ -1210,7 +1210,7 @@
         </div>
         <div class="task-gate" data-task="task3">
           <span class="task-gate-icon">&#128274;</span>
-          <span>Complete all videos above to unlock the task steps below</span>
+          <span data-i18n-block="task1_gate">Complete all videos above to unlock the task steps below</span>
         </div>
 
         <h3>What to Learn</h3>
@@ -1274,7 +1274,7 @@
         </div>
         <div class="task-gate" data-task="task4">
           <span class="task-gate-icon">&#128274;</span>
-          <span>Complete the video above to unlock the task steps below</span>
+          <span data-i18n-block="task4_gate">Complete the video above to unlock the task steps below</span>
         </div>
 
         <h3>What to Learn</h3>
@@ -1369,7 +1369,7 @@
               <th>What Makes It Strong</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody data-i18n-block="criteria_tbody">
             <tr>
               <td><strong>1. Needfinding</strong></td>
               <td>Based on a clear user group; includes landscape review; research goals are specific and relevant</td>
@@ -1787,7 +1787,7 @@
           <a class="card card-link" href="#rag-lessons"><strong>7. RAG &amp; ChromaDB Lessons</strong>Concept teaching for the AI system students will build.</a>
           <a class="card card-link" href="HCI_Track_Student_Tasks.pdf" download><strong>8. HCI Student Tasks Track (PDF)</strong>Complete task guide with videos, learning objectives, and deliverables for Stage 1.</a>
         </div>
-        <div class="callout" style="margin-top:16px;">
+        <div class="callout" style="margin-top:16px;" data-i18n-block="teacher_principle">
           <strong>Teaching principle:</strong> Stage 1 must come before Stage 2. Students should never start coding until they have a tested prototype backed by real user evidence. The design informs the build.
         </div>
       </section>
@@ -1796,8 +1796,8 @@
   </div>
 
   <div class="container footer">
-    <div>Built as a single-file static webpage for direct use in a browser, school intranet, GitHub Pages, or a local teaching folder.</div>
-    <div style="margin-top:8px;font-size:13px;opacity:0.7;">HCI curriculum adapted from <a href="https://omscs6750.gatech.edu/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2);text-decoration:underline;">CS 6750: Human-Computer Interaction</a> by Dr. David Joyner at Georgia Institute of Technology.</div>
+    <div data-i18n-block="footer_built">Built as a single-file static webpage for direct use in a browser, school intranet, GitHub Pages, or a local teaching folder.</div>
+    <div style="margin-top:8px;font-size:13px;opacity:0.7;" data-i18n-block="footer_credit">HCI curriculum adapted from <a href="https://omscs6750.gatech.edu/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2);text-decoration:underline;">CS 6750: Human-Computer Interaction</a> by Dr. David Joyner at Georgia Institute of Technology.</div>
   </div>
 
   <!-- Video Modal -->
@@ -2008,12 +2008,16 @@
       // CRITERIA & TEMPLATES
       ['#criteria h2', 'Evaluation Criteria', '评估标准'],
       ['#criteria .lead', 'Each task will be assessed on the following dimensions.', '每个任务将按以下维度进行评估。'],
+      ['#criteria .rubric-table th:nth-child(1)', 'Task', '任务'],
+      ['#criteria .rubric-table th:nth-child(2)', 'What Makes It Strong', '优秀表现'],
       ['#templates h2', 'Student Templates', '学生模板'],
       ['#templates .lead', 'Ready-to-use templates for each task. Fill them in as you go &mdash; they match the outputs your teacher will review.', '每个任务的即用型模板，随进度填写——内容与老师评阅标准一一对应。'],
       // STARTER & TEACHER PACK
       ['#starter-code h2', 'Starter Code', '起始代码'],
       ['#teacher-pack h2', 'Teacher Pack', '教师资料包'],
       ['#teacher-pack .lead', 'Core materials for the full 8-week program.', '8周课程的核心教学资料。'],
+      ['.video-progress-label > span:first-child', 'Video progress', '视频进度'],
+      ['.video-item .v-link', 'In-class', '课堂'],
     ];
 
     // Text-pattern replacements for repeated h3 sub-headings and week titles
@@ -2040,9 +2044,43 @@
       ['Task 8: Ship & Present', '任务八：上线与汇报'],
     ];
 
+    // Block-level translations (full innerHTML for EN/ZH)
+    var BLOCKS = {
+      overview_track: { zh: '<strong>学生任务手册：</strong>下载完整任务指南，含视频、学习目标、工作流与评估标准。<br><a href="HCI_Track_Student_Tasks.pdf" download style="color:var(--accent-2);text-decoration:underline;font-weight:600;">下载 HCI 学生任务手册 (PDF) &darr;</a>' },
+      overview_warn: { zh: '<strong>不要先写代码。</strong>先完成第一阶段。从理解用户、问题空间、合适的需求探索方法以及系统可信度开始。原型应基于证据而非假设。代码在第二阶段进行。' },
+      reports_format: { zh: '<strong>格式：</strong>使用 <strong>Overleaf</strong> 中的 <strong>JDF（Joyner 文档格式）</strong> 模板。<br>免费注册：<a href="https://www.overleaf.com" target="_blank" style="color:var(--accent-2); text-decoration:underline;">overleaf.com</a><br>JDF 模板：<a href="https://www.overleaf.com/latex/templates/jdf-for-cs-6750/vkqbhfrgxtgs" target="_blank" style="color:var(--accent-2); text-decoration:underline;">JDF for CS 6750</a>' },
+      reports_ul: { zh: '<li>本周你完成了什么</li><li>你做了哪些关键决策及原因</li><li>遇到的困难或待解决问题</li><li>下一步计划</li>' },
+      workflow_s1_desc: { zh: '理解用户、收集证据、设计并测试原型。' },
+      workflow_s2_desc: { zh: '学习 RAG 与 ChromaDB，开发 Web 应用，用真实用户测试并上线。' },
+      workflow_complete: { zh: '<strong>第一阶段完成。</strong>此时你应已有一个经用户验证、修订过的原型。接下来开始开发。' },
+      workflow_week1: { zh: '<li>在课堂学习需求探索相关视频 (3.3.1, 3.3.3, 3.3.4, 3.3.6, 3.3.8, 3.3.11, 3.3.12, 3.3.15, 3.3.16, 3.3.20)</li><li>确定你的主要用户群体</li><li>调研 2&ndash;3 个现有解决方案</li><li>决定采用的需求探索方法</li><li>明确研究目标</li><li><strong>提交第 1 周报告（Overleaf JDF 格式）</strong></li>' },
+      workflow_week2: { zh: '<li>在课堂学习数据收集与需求表达相关视频 (3.3.13, 3.3.17, 3.3.18, 3.3.25, 3.3.3)</li><li>起草问卷或访谈提纲</li><li>试测并修订问题</li><li>开展访谈、问卷或焦点小组</li><li>分析结果，识别用户需求、痛点与信任关切</li><li>将发现转化为初步需求</li><li><strong>提交第 2 周报告（Overleaf JDF 格式）</strong></li>' },
+      workflow_week3: { zh: '<li>在课堂学习设计备选方案、原型与设计原则相关视频</li><li>制作简单原型（示意稿，非代码）</li><li>准备测试任务</li><li>用出声思维法请用户测试原型</li><li>记录可用性与信任相关问题</li><li><strong>提交第 3 周报告（Overleaf JDF 格式）</strong></li>' },
+      workflow_week4: { zh: '<li>回顾最重要的问题</li><li>修订设计</li><li>如可能，再次测试修订版</li><li>简要反思改进之处</li><li><strong>提交第 4 周报告（Overleaf JDF 格式）</strong></li>' },
+      workflow_week5: { zh: '<li>理解 RAG（检索增强生成）是什么及为何适合本项目</li><li>理解 ChromaDB 与向量检索原理</li><li>掌握流程：嵌入 &rarr; 存储 &rarr; 检索 &rarr; 生成 &rarr; 引用</li><li>搭建开发环境（Node.js, ChromaDB, OpenAI API）</li><li>运行起始代码并导入样本手册</li><li>尝试提问并观察检索结果</li><li><strong>提交第 5 周报告（Overleaf JDF 格式）</strong></li>' },
+      workflow_week6: { zh: '<li>将第一阶段原型实现为 HTML/CSS 界面</li><li>实现问题输入、答案展示与引用/来源区域</li><li>将前端接入后端 API (/api/ask)</li><li>处理加载、空状态与「未找到」反馈</li><li>应用第一阶段设计原则（简洁、 affordance、可感知性）</li><li><strong>提交第 6 周报告（Overleaf JDF 格式）</strong></li>' },
+      workflow_week7: { zh: '<li>根据本校手册定制分块策略</li><li>调整系统提示以提升回答质量</li><li>实现手册上传与导入流程</li><li>为分块添加元数据（章节名、页码）</li><li>部署到 Railway 或 Render</li><li><strong>提交第 7 周报告（Overleaf JDF 格式）</strong></li>' },
+      workflow_week8: { zh: '<li>用目标用户对上线版 MVP 进行测试</li><li>记录：能否找到答案？是否信任 AI？是否查看引用？</li><li>识别剩余问题并做最终改进</li><li>准备最终汇报：从研究到成品的完整过程</li><li>反思：第一阶段研究如何影响第二阶段实现？</li><li><strong>提交第 8 周最终报告（Overleaf JDF 格式）</strong></li>' },
+      footer_built: { zh: '本页为单文件静态网页，可直接在浏览器、校园网、GitHub Pages 或本地教学目录中使用。' },
+      footer_credit: { zh: 'HCI 课程内容改编自 Georgia Tech <a href="https://omscs6750.gatech.edu/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-2);text-decoration:underline;">CS 6750: Human-Computer Interaction</a>，授课教师 David Joyner。' },
+      overview_stage1_card: { zh: '<strong style="color:var(--accent);">第一阶段 &mdash; HCI 设计（第1&ndash;4周）</strong><p>理解真实用户、收集证据、设计并测试原型。</p><ul style="margin-top:8px;font-size:14px;"><li>1. 需求探索</li><li>2. 数据收集与需求表达</li><li>3. 原型设计</li><li>4. 用户测试</li><li>5. 迭代优化</li></ul><p class="muted" style="font-size:13px;margin-top:8px;">成果：基于用户证据的、经测试与修订的原型</p>' },
+      overview_stage2_card: { zh: '<strong style="color:var(--accent-2);">第二阶段 &mdash; 技术开发（第5&ndash;8周）</strong><p>学习 RAG 与 ChromaDB，开发可运行的 Web 应用，测试并上线。</p><ul style="margin-top:8px;font-size:14px;"><li>6. RAG 与 ChromaDB 概念</li><li>7. MVP 开发</li><li>8. 上线测试与最终汇报</li></ul><p class="muted" style="font-size:13px;margin-top:8px;">成果：已部署、可用的 AI 手册助手</p>' },
+      task1_gate: { zh: '完成上方全部视频后即可解锁下方任务步骤' },
+      task4_gate: { zh: '完成上方视频后即可解锁下方任务步骤' },
+      teacher_principle: { zh: '<strong>教学原则：</strong>必须先完成第一阶段再进入第二阶段。学生在拥有经用户验证的原型之前不应开始写代码。设计指导开发。' },
+      criteria_tbody: { zh: '<tr><td><strong>1. 需求探索</strong></td><td>有明确的用户群体；包含竞品/现状调研；研究目标具体且相关</td></tr><tr><td><strong>2. 数据收集与需求表达</strong></td><td>问题清晰、无偏见、与目标一致；工具有据可依；修订有说明；发现基于真实数据；需求表达清楚；涵盖功能与信任</td></tr><tr><td><strong>3. 原型设计</strong></td><td>体现需求；交互流程清晰；含信任支持要素；应用设计原则（简洁、affordance、可感知、一致、约束）；保真度合适</td></tr><tr><td><strong>4. 用户测试</strong></td><td>任务真实；有真实用户；观察具体、有据；问题明确</td></tr><tr><td><strong>5. 迭代优化</strong></td><td>问题优先级合理；修改有证据支撑；反思诚实、有深度</td></tr><tr><td colspan="2" style="background:rgba(34,211,238,0.08);color:var(--accent-2);font-weight:700;text-align:center;letter-spacing:0.06em;font-size:13px;">第二阶段 &mdash; 技术开发</td></tr><tr><td><strong>6. RAG 与 ChromaDB</strong></td><td>能清晰解释 RAG；理解嵌入→存储→检索→生成流程；成功运行并测试起始代码；观察具体</td></tr><tr><td><strong>7. MVP 开发</strong></td><td>前端体现第一阶段原型；设计可追溯到用户证据；RAG 流程可用；分块策略合理；应用已部署且可用</td></tr><tr><td><strong>8. 上线测试与汇报</strong></td><td>经真实用户测试；信任与可用性观察具体；能说明从研究到产品的完整过程；反思诚实</td></tr>' }
+    };
+
     function applyLang(l) {
       lang = l;
       localStorage.setItem('aishb-lang', l);
+      // Apply block-level translations first
+      document.querySelectorAll('[data-i18n-block]').forEach(function(el) {
+        var id = el.getAttribute('data-i18n-block');
+        if (!BLOCKS[id]) return;
+        if (!BLOCKS[id].en) BLOCKS[id].en = el.innerHTML;
+        el.innerHTML = (BLOCKS[id][l] || BLOCKS[id].en);
+      });
       // Apply selector-based translations
       T.forEach(function(item) {
         document.querySelectorAll(item[0]).forEach(function(el) {
