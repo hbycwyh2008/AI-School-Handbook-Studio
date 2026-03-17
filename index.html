@@ -740,20 +740,17 @@
 <body>
   <div class="container hero">
     <div class="hero-card">
-      <div class="eyebrow">HCI &middot; Needfinding &middot; Prototyping &middot; Evaluation</div>
+      <div class="eyebrow">8-Week Program &middot; HCI Design + RAG Implementation</div>
       <h1>AI School Handbook Studio</h1>
-      <p>An HCI-driven student task track: understand real user needs through needfinding, collect and analyze data, design a prototype grounded in evidence, evaluate with users, and iterate based on findings.</p>
+      <p>A two-stage, 8-week program: Stage 1 focuses on HCI design — needfinding, prototyping, and evaluation with real users. Stage 2 teaches RAG, ChromaDB, and full web app development to bring the design to life.</p>
       <div class="quick-links">
         <a class="pill pill-demo" href="https://ai-school-handbook-production.up.railway.app/" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
-        <a class="pill" href="#overview">Goal</a>
-        <a class="pill" href="#workflow">4-Week Plan</a>
-        <a class="pill" href="#task1">Needfinding</a>
-        <a class="pill" href="#task2">Data Collection</a>
-        <a class="pill" href="#task3">Prototyping</a>
-        <a class="pill" href="#task4">Evaluation</a>
-        <a class="pill" href="#task5">Iteration</a>
+        <a class="pill" href="#overview">Overview</a>
+        <a class="pill" href="#stage1">Stage 1: HCI Design</a>
+        <a class="pill" href="#stage2">Stage 2: Build</a>
+        <a class="pill" href="#workflow">8-Week Plan</a>
         <a class="pill" href="#criteria">Rubric</a>
-        <a class="pill" href="#starter-code">Starter Code</a>
+        <a class="pill" href="#templates">Templates</a>
       </div>
     </div>
   </div>
@@ -762,20 +759,25 @@
     <aside class="sidebar">
       <h3>Navigate</h3>
       <nav class="nav">
-        <a href="#overview">Goal &amp; Overview</a>
+        <a href="#overview">Overview &amp; Goal</a>
         <a href="#reports">Weekly Reports</a>
-        <a href="#workflow">4-Week Workflow</a>
+        <a href="#workflow">8-Week Workflow</a>
         <div class="nav-divider"></div>
+        <a href="#stage1" style="color:var(--accent);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;">Stage 1 &mdash; HCI Design</a>
         <a href="#task1">1 &mdash; Needfinding</a>
         <a href="#task2">2 &mdash; Data Collection</a>
         <a href="#task3">3 &mdash; Prototyping</a>
         <a href="#task4">4 &mdash; Evaluation</a>
         <a href="#task5">5 &mdash; Iteration</a>
         <div class="nav-divider"></div>
+        <a href="#stage2" style="color:var(--accent-2);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;">Stage 2 &mdash; Build</a>
+        <a href="#rag-lessons">6 &mdash; RAG &amp; ChromaDB</a>
+        <a href="#build-mvp">7 &mdash; MVP Build</a>
+        <a href="#live-test">8 &mdash; Live Testing</a>
+        <div class="nav-divider"></div>
         <a href="#criteria">Evaluation Criteria</a>
         <a href="#templates">Student Templates</a>
         <a href="#starter-code">Starter Code</a>
-        <a href="#rag-lessons">RAG &amp; ChromaDB Lessons</a>
         <a href="#teacher-pack">Teacher Pack</a>
       </nav>
     </aside>
@@ -785,24 +787,41 @@
       <!-- GOAL & OVERVIEW -->
       <section id="overview" class="section">
         <h2>Goal &amp; Overview</h2>
-        <p class="lead">Learn how to understand real user needs, choose appropriate needfinding methods, collect useful evidence, turn findings into requirements, design a simple prototype, evaluate it with users, and improve it through iteration.</p>
+        <p class="lead">An 8-week program to design and build an AI-powered school handbook assistant. Stage 1 teaches HCI design through real user research. Stage 2 teaches the technical skills to build and ship a working web app.</p>
         <div class="grid-3">
           <div class="card"><strong>Project</strong>AI School Handbook Assistant</div>
-          <div class="card"><strong>Core Process</strong>Needfinding &rarr; Requirements &rarr; Prototyping &rarr; Evaluation &rarr; Iteration</div>
-          <div class="card"><strong>Approach</strong>Evidence-driven HCI design: start with users, not code.</div>
+          <div class="card"><strong>Duration</strong>8 weeks total: 4 weeks design + 4 weeks build</div>
+          <div class="card"><strong>Approach</strong>Design first, build second. Evidence before code.</div>
         </div>
 
-        <h3>Five Tasks</h3>
-        <div class="grid-3" style="margin-top:10px;">
-          <div class="card"><strong>1. Needfinding</strong>Explore the problem space, identify users, choose research methods, define goals.</div>
-          <div class="card"><strong>2. Data Collection</strong>Design instruments, collect data, analyze findings, define requirements.</div>
-          <div class="card"><strong>3. Prototyping</strong>Generate design alternatives, build a testable low-fidelity prototype.</div>
-          <div class="card"><strong>4. Evaluation</strong>Test the prototype with real users using think-aloud, identify issues.</div>
-          <div class="card"><strong>5. Iteration</strong>Prioritize problems, revise the design, re-test, and reflect.</div>
+        <h3>Two Stages</h3>
+        <div class="grid-2" style="margin-top:10px;">
+          <div class="card" style="border-color:rgba(139,92,246,0.3);">
+            <strong style="color:var(--accent);">Stage 1 &mdash; HCI Design (Weeks 1&ndash;4)</strong>
+            <p>Understand real users, collect evidence, design and test a prototype.</p>
+            <ul style="margin-top:8px;font-size:14px;">
+              <li>1. Needfinding</li>
+              <li>2. Data Collection &amp; Need Representation</li>
+              <li>3. Prototyping</li>
+              <li>4. Evaluation</li>
+              <li>5. Iteration</li>
+            </ul>
+            <p class="muted" style="font-size:13px;margin-top:8px;">Output: a tested, revised prototype grounded in user evidence</p>
+          </div>
+          <div class="card" style="border-color:rgba(34,211,238,0.3);">
+            <strong style="color:var(--accent-2);">Stage 2 &mdash; Technical Build (Weeks 5&ndash;8)</strong>
+            <p>Learn RAG &amp; ChromaDB, build a working web app, test and ship.</p>
+            <ul style="margin-top:8px;font-size:14px;">
+              <li>6. RAG &amp; ChromaDB Concepts</li>
+              <li>7. MVP Build</li>
+              <li>8. Live Testing &amp; Final Presentation</li>
+            </ul>
+            <p class="muted" style="font-size:13px;margin-top:8px;">Output: a deployed, working AI handbook assistant</p>
+          </div>
         </div>
 
         <div class="callout warn" style="margin-top:18px;">
-          <strong>Do not start with coding.</strong> Start by understanding the users, the problem space, the most suitable needfinding methods, and what makes the system trustworthy. Your prototype should come from evidence, not assumptions.
+          <strong>Do not start with coding.</strong> Stage 1 comes first. Start by understanding the users, the problem space, the most suitable needfinding methods, and what makes the system trustworthy. Your prototype should come from evidence, not assumptions. Code comes in Stage 2.
         </div>
       </section>
 
@@ -826,10 +845,13 @@
         </ul>
       </section>
 
-      <!-- 4-WEEK WORKFLOW -->
+      <!-- 8-WEEK WORKFLOW -->
       <section id="workflow" class="section">
-        <h2>Suggested 4-Week Workflow</h2>
-        <p class="lead">A structured timeline mapping each week to the HCI task sequence.</p>
+        <h2>8-Week Workflow</h2>
+        <p class="lead">Two stages, eight weeks. Design first, then build.</p>
+
+        <h3 id="stage1" style="color:var(--accent);margin-top:8px;">Stage 1 &mdash; HCI Design (Weeks 1&ndash;4)</h3>
+        <p class="muted">Understand users, collect evidence, design and test a prototype.</p>
 
         <div class="week">
           <div class="week-title"><h3>Week 1 &mdash; Understand and Plan</h3><span>Task 1: Needfinding</span></div>
@@ -850,8 +872,7 @@
             <li>Draft your survey or interview guide</li>
             <li>Pilot and revise your questions</li>
             <li>Conduct interviews, surveys, or focus groups</li>
-            <li>Analyze findings</li>
-            <li>Identify user needs, pain points, and trust concerns</li>
+            <li>Analyze findings and identify user needs, pain points, trust concerns</li>
             <li>Turn findings into initial requirements</li>
             <li><strong>Submit Week 2 report (JDF format via Overleaf)</strong></li>
           </ul>
@@ -877,6 +898,62 @@
             <li>Test the updated version again, if possible</li>
             <li>Write a short reflection on what improved</li>
             <li><strong>Submit Week 4 report (JDF format via Overleaf)</strong></li>
+          </ul>
+        </div>
+
+        <div class="callout good" style="margin-top:6px;">
+          <strong>Stage 1 complete.</strong> You should now have a tested, revised prototype backed by real user evidence. Time to build it.
+        </div>
+
+        <h3 id="stage2" style="color:var(--accent-2);margin-top:24px;">Stage 2 &mdash; Technical Build (Weeks 5&ndash;8)</h3>
+        <p class="muted">Learn RAG and ChromaDB, build the web app, test with real users, and ship.</p>
+
+        <div class="week">
+          <div class="week-title"><h3>Week 5 &mdash; Learn RAG &amp; ChromaDB</h3><span>Task 6: RAG Concepts</span></div>
+          <ul>
+            <li>Learn what RAG (Retrieval-Augmented Generation) is and why it fits this project</li>
+            <li>Learn what ChromaDB is and how vector search works</li>
+            <li>Understand the full pipeline: embed &rarr; store &rarr; retrieve &rarr; generate &rarr; cite</li>
+            <li>Set up the development environment (Node.js, ChromaDB, OpenAI API)</li>
+            <li>Run the starter code and ingest a sample handbook</li>
+            <li>Experiment: ask questions and observe retrieval results</li>
+            <li><strong>Submit Week 5 report (JDF format via Overleaf)</strong></li>
+          </ul>
+        </div>
+
+        <div class="week">
+          <div class="week-title"><h3>Week 6 &mdash; Build the Frontend</h3><span>Task 7: MVP Build (Part 1)</span></div>
+          <ul>
+            <li>Translate your Stage 1 prototype into a real HTML/CSS interface</li>
+            <li>Implement the question input, answer display, and citation/source section</li>
+            <li>Connect the frontend to the backend API (/api/ask)</li>
+            <li>Handle loading states, empty states, and "not found" responses</li>
+            <li>Apply the design principles from Stage 1 (simplicity, affordance, perceptibility)</li>
+            <li><strong>Submit Week 6 report (JDF format via Overleaf)</strong></li>
+          </ul>
+        </div>
+
+        <div class="week">
+          <div class="week-title"><h3>Week 7 &mdash; Build the Backend &amp; Deploy</h3><span>Task 7: MVP Build (Part 2)</span></div>
+          <ul>
+            <li>Customize the chunking strategy for your specific handbook</li>
+            <li>Tune the system prompt for better answer quality</li>
+            <li>Implement the handbook upload/ingest flow</li>
+            <li>Add metadata (section titles, page numbers) to chunks</li>
+            <li>Deploy the app to Railway or Render</li>
+            <li><strong>Submit Week 7 report (JDF format via Overleaf)</strong></li>
+          </ul>
+        </div>
+
+        <div class="week">
+          <div class="week-title"><h3>Week 8 &mdash; Live Testing &amp; Final Presentation</h3><span>Task 8: Ship &amp; Present</span></div>
+          <ul>
+            <li>Test the live MVP with real users from your target group</li>
+            <li>Record: Can they find answers? Do they trust the AI? Do they check citations?</li>
+            <li>Identify remaining problems and make final improvements</li>
+            <li>Prepare final presentation: the full journey from research to working product</li>
+            <li>Reflect: How did Stage 1 research shape Stage 2 implementation?</li>
+            <li><strong>Submit Week 8 final report (JDF format via Overleaf)</strong></li>
           </ul>
         </div>
       </section>
@@ -1271,6 +1348,21 @@
               <td><strong>5. Iteration</strong></td>
               <td>Prioritizes the right problems; changes are justified by evidence; reflection is honest and thoughtful</td>
             </tr>
+            <tr>
+              <td colspan="2" style="background:rgba(34,211,238,0.08);color:var(--accent-2);font-weight:700;text-align:center;letter-spacing:0.06em;font-size:13px;">STAGE 2 &mdash; TECHNICAL BUILD</td>
+            </tr>
+            <tr>
+              <td><strong>6. RAG &amp; ChromaDB</strong></td>
+              <td>Can explain RAG clearly; understands embed &rarr; store &rarr; retrieve &rarr; generate flow; successfully ran and tested the starter code; observations are specific</td>
+            </tr>
+            <tr>
+              <td><strong>7. MVP Build</strong></td>
+              <td>Frontend reflects the Stage 1 prototype; design decisions are traceable to user evidence; RAG pipeline works; chunking strategy is thoughtful; app is deployed and functional</td>
+            </tr>
+            <tr>
+              <td><strong>8. Live Testing &amp; Presentation</strong></td>
+              <td>Tested with real users; trust and usability observations are specific; can explain the full journey from research to product; reflection is honest about what works and what doesn't</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -1494,10 +1586,10 @@
         </div>
       </section>
 
-      <!-- RAG LESSONS -->
-      <section id="rag-lessons" class="section">
-        <h2>Mini-Lessons on RAG and ChromaDB</h2>
-        <p class="lead">Shared concept teaching so students understand the system logic behind the handbook assistant.</p>
+      <!-- STAGE 2: TASK 6 — RAG & CHROMADB -->
+      <section id="rag-lessons" class="section" style="border-color:rgba(34,211,238,0.25);">
+        <h2 style="color:var(--accent-2);">Task 6 &mdash; RAG &amp; ChromaDB Concepts</h2>
+        <p class="lead">Understand the AI system you are about to build. This is the knowledge foundation for Stage 2.</p>
 
         <h3>What is RAG?</h3>
         <p>RAG stands for <strong>Retrieval-Augmented Generation</strong>. Instead of relying only on a language model's memory, RAG first retrieves relevant documents from a knowledge base, then uses them to generate a grounded answer.</p>
@@ -1525,24 +1617,135 @@
 
         <h3>Why Metadata Matters</h3>
         <p>Each chunk stored in ChromaDB can carry metadata such as section title, page number, and document name. This metadata powers the <strong>citation and source display</strong> in the final product.</p>
-        <div class="callout good"><strong>Key takeaway:</strong> RAG = Retrieve relevant chunks &rarr; Feed them to the AI &rarr; Generate a grounded, citable answer.</div>
+
+        <h3>The Full Pipeline</h3>
+        <div class="card" style="margin-top:14px; font-family: monospace; font-size: 14px; line-height: 2.2; text-align:center;">
+          Handbook PDF/DOCX<br>&darr;<br>
+          Parse text &rarr; Split into chunks &rarr; Add metadata (section, page)<br>&darr;<br>
+          Embed each chunk (OpenAI Embeddings) &rarr; Store in ChromaDB<br>&darr;<br>
+          User asks a question &rarr; Embed the question<br>&darr;<br>
+          ChromaDB finds the most similar chunks<br>&darr;<br>
+          Send chunks + question to GPT &rarr; Generate answer with citations<br>&darr;<br>
+          Display answer + source to user
+        </div>
+
+        <h3>What to Do This Week</h3>
+        <ul>
+          <li>Read through the RAG concepts above until you can explain them in your own words</li>
+          <li>Set up your development environment (Node.js, Python, ChromaDB)</li>
+          <li>Clone and run the starter code</li>
+          <li>Ingest a sample handbook and ask questions through the app</li>
+          <li>Observe: Which questions get good answers? Which don't? Why?</li>
+        </ul>
+
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>A running local copy of the starter code</li>
+            <li>A short written explanation of what RAG is and why it fits this project</li>
+            <li>Notes on what you observed when testing with the sample handbook</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- STAGE 2: TASK 7 — MVP BUILD -->
+      <section id="build-mvp" class="section" style="border-color:rgba(34,211,238,0.25);">
+        <h2 style="color:var(--accent-2);">Task 7 &mdash; MVP Build</h2>
+        <p class="lead">Turn your Stage 1 prototype into a working web application.</p>
+
+        <h3>Week 6 &mdash; Frontend</h3>
+        <p>Translate your tested prototype design into real HTML, CSS, and JavaScript.</p>
+        <div class="card" style="margin-top:10px;">
+          <strong>What to build</strong>
+          <ul>
+            <li>A question input page based on your prototype design</li>
+            <li>An answer display area showing the AI response</li>
+            <li>A citation/source section so users can verify the answer</li>
+            <li>Loading states, empty states, and "not found" handling</li>
+            <li>Apply the design principles from Stage 1: simplicity, affordance, perceptibility, consistency, constraints</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <strong>Key connection:</strong> Your frontend should directly reflect the prototype you designed and tested in Stage 1. The design decisions you made based on user evidence should guide every implementation choice.
+        </div>
+
+        <h3>Week 7 &mdash; Backend &amp; Deploy</h3>
+        <p>Customize the RAG pipeline and deploy to the web.</p>
+        <div class="card" style="margin-top:10px;">
+          <strong>What to build</strong>
+          <ul>
+            <li>Customize the chunking strategy for your school's handbook (detect sections, headers, tables)</li>
+            <li>Tune the system prompt for answer quality and tone</li>
+            <li>Implement the handbook upload/ingest flow</li>
+            <li>Add metadata (section titles, page numbers) to chunks for better citations</li>
+            <li>Deploy the app to Railway or Render</li>
+          </ul>
+        </div>
+
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>A working web app that answers handbook questions with citations</li>
+            <li>Deployed to a public URL</li>
+            <li>Documentation of key technical decisions (chunking strategy, prompt design, citation format)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- STAGE 2: TASK 8 — LIVE TESTING -->
+      <section id="live-test" class="section" style="border-color:rgba(34,211,238,0.25);">
+        <h2 style="color:var(--accent-2);">Task 8 &mdash; Live Testing &amp; Final Presentation</h2>
+        <p class="lead">Test the real product with real users and present the full journey.</p>
+
+        <h3>What to Do</h3>
+        <div class="card" style="margin-top:10px;">
+          <strong>Live Testing</strong>
+          <ul>
+            <li>Test the deployed MVP with 3&ndash;5 real users from your target group</li>
+            <li>Record: Can they find answers to common handbook questions?</li>
+            <li>Record: Do they trust the AI-generated answers? Do they check citations?</li>
+            <li>Identify remaining usability and trust issues</li>
+            <li>Make final improvements based on testing</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Final Presentation</strong>
+          <p>Prepare a presentation covering the full journey from research to working product:</p>
+          <ul>
+            <li>Who is your target user and what problem did you solve?</li>
+            <li>What did you learn from needfinding and data collection?</li>
+            <li>How did user evidence shape your design decisions?</li>
+            <li>How does your RAG system work?</li>
+            <li>What did live testing reveal? What would you improve next?</li>
+            <li>Why do citations matter for user trust?</li>
+          </ul>
+        </div>
+
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>Live testing results (task success, trust observations, remaining issues)</li>
+            <li>Final improved version of the app</li>
+            <li>Final presentation and reflection report</li>
+          </ul>
+        </div>
       </section>
 
       <!-- TEACHER PACK -->
       <section id="teacher-pack" class="section">
         <h2>Teacher Pack</h2>
-        <p class="lead">Core materials to prepare before launch.</p>
+        <p class="lead">Core materials for the full 8-week program.</p>
         <div class="grid-2">
-          <a class="card card-link" href="#overview"><strong>1. Goal &amp; Task Overview</strong>The 5-task HCI process, learning objectives, and final expectations.</a>
-          <a class="card card-link" href="#workflow"><strong>2. 4-Week Workflow</strong>Pacing guide mapping each week to the HCI task sequence.</a>
+          <a class="card card-link" href="#overview"><strong>1. Program Overview</strong>Two-stage, 8-week structure with learning objectives.</a>
+          <a class="card card-link" href="#workflow"><strong>2. 8-Week Workflow</strong>Pacing guide: Stage 1 (design) + Stage 2 (build).</a>
           <a class="card card-link" href="#reports"><strong>3. Weekly Report Format</strong>JDF template in Overleaf for structured student reports.</a>
-          <a class="card card-link" href="#templates"><strong>4. Student Templates</strong>Ready-to-use templates matching each task's output requirements.</a>
-          <a class="card card-link" href="#criteria"><strong>5. Evaluation Criteria</strong>Assessment dimensions aligned with each HCI task.</a>
-          <a class="card card-link" href="#starter-code"><strong>6. Starter Code</strong>Minimal working codebase (Express + ChromaDB + OpenAI) for the build phase.</a>
-          <a class="card card-link" href="#rag-lessons"><strong>7. RAG &amp; ChromaDB Lessons</strong>Concept teaching for AI/retrieval system understanding.</a>
+          <a class="card card-link" href="#templates"><strong>4. Student Templates</strong>Ready-to-use templates for all 8 tasks.</a>
+          <a class="card card-link" href="#criteria"><strong>5. Evaluation Criteria</strong>Assessment for both design and technical implementation.</a>
+          <a class="card card-link" href="#starter-code"><strong>6. Starter Code</strong>Minimal working codebase (Express + ChromaDB + OpenAI) for Stage 2.</a>
+          <a class="card card-link" href="#rag-lessons"><strong>7. RAG &amp; ChromaDB Lessons</strong>Concept teaching for the AI system students will build.</a>
         </div>
         <div class="callout" style="margin-top:16px;">
-          <strong>Teaching principle:</strong> Do not start with coding. Guide students through the full HCI process &mdash; needfinding, data collection, prototyping, evaluation, iteration &mdash; before any implementation.
+          <strong>Teaching principle:</strong> Stage 1 must come before Stage 2. Students should never start coding until they have a tested prototype backed by real user evidence. The design informs the build.
         </div>
       </section>
 
