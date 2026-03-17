@@ -42,12 +42,34 @@
       padding: 42px 0 28px;
     }
 
+    .lang-toggle {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(34,211,238,0.45);
+      color: var(--accent-2);
+      border-radius: 10px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: 0.2s ease;
+      z-index: 10;
+    }
+    .lang-toggle:hover {
+      background: rgba(34,211,238,0.15);
+      border-color: var(--accent-2);
+    }
+
     .hero-card {
       background: linear-gradient(135deg, rgba(139,92,246,0.16), rgba(34,211,238,0.09));
       border: 1px solid var(--line);
       border-radius: 28px;
       padding: 30px;
       box-shadow: var(--shadow);
+      position: relative;
       backdrop-filter: blur(16px);
     }
 
@@ -752,6 +774,7 @@
 <body>
   <div class="container hero">
     <div class="hero-card">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">中文</button>
       <div class="eyebrow">8-Week Program &middot; HCI Design + RAG Implementation</div>
       <h1>AI School Handbook Studio</h1>
       <p>A two-stage, 8-week program: Stage 1 focuses on HCI design — needfinding, prototyping, and evaluation with real users. Stage 2 teaches RAG, ChromaDB, and full web app development to bring the design to life.</p>
@@ -1921,6 +1944,133 @@
   </script>
 
   <script>
+  // Language toggle (EN / ZH)
+  (function() {
+    var lang = localStorage.getItem('aishb-lang') || 'en';
+
+    // [selector, en_html, zh_html]
+    var T = [
+      // SIDEBAR
+      ['aside h3', 'Navigate', '导航'],
+      ['.nav a[href="#overview"]', 'Overview &amp; Goal', '概览与目标'],
+      ['.nav a[href="#reports"]', 'Weekly Reports', '每周报告'],
+      ['.nav a[href="#workflow"]', '8-Week Workflow', '8周工作流'],
+      ['.nav a[href="#stage1"]', 'Stage 1 &mdash; HCI Design', '第一阶段 &mdash; HCI 设计'],
+      ['.nav a[href="#task1"]', '1 &mdash; Needfinding', '1 &mdash; 需求探索'],
+      ['.nav a[href="#task2"]', '2 &mdash; Data Collection', '2 &mdash; 数据收集'],
+      ['.nav a[href="#task3"]', '3 &mdash; Prototyping', '3 &mdash; 原型设计'],
+      ['.nav a[href="#task4"]', '4 &mdash; Evaluation', '4 &mdash; 用户测试'],
+      ['.nav a[href="#task5"]', '5 &mdash; Iteration', '5 &mdash; 迭代优化'],
+      ['.nav a[href="#stage2"]', 'Stage 2 &mdash; Build', '第二阶段 &mdash; 技术开发'],
+      ['.nav a[href="#rag-lessons"]', '6 &mdash; RAG &amp; ChromaDB', '6 &mdash; RAG &amp; ChromaDB'],
+      ['.nav a[href="#build-mvp"]', '7 &mdash; MVP Build', '7 &mdash; MVP 开发'],
+      ['.nav a[href="#live-test"]', '8 &mdash; Live Testing', '8 &mdash; 上线测试'],
+      ['.nav a[href="#criteria"]', 'Evaluation Criteria', '评估标准'],
+      ['.nav a[href="#templates"]', 'Student Templates', '学生模板'],
+      ['.nav a[href="#starter-code"]', 'Starter Code', '起始代码'],
+      ['.nav a[href="#teacher-pack"]', 'Teacher Pack', '教师资料包'],
+      // HERO
+      ['.eyebrow', '8-Week Program &middot; HCI Design + RAG Implementation', '8周课程 &middot; HCI设计 + RAG技术开发'],
+      ['.hero-card > p', 'A two-stage, 8-week program: Stage\u00a01 focuses on HCI design &mdash; needfinding, prototyping, and evaluation with real users. Stage\u00a02 teaches RAG, ChromaDB, and full web app development to bring the design to life.', '两阶段8周课程：第一阶段专注HCI设计——需求探索、原型设计与用户测试；第二阶段学习RAG、ChromaDB与Web应用开发，将设计方案转化为可运行的产品。'],
+      ['.pill[href="#overview"]', 'Overview', '概览'],
+      ['.pill[href="#stage1"]', 'Stage 1: HCI Design', '第一阶段：HCI设计'],
+      ['.pill[href="#stage2"]', 'Stage 2: Build', '第二阶段：开发'],
+      ['.pill[href="#workflow"]', '8-Week Plan', '8周计划'],
+      ['.pill[href="#criteria"]', 'Rubric', '评分标准'],
+      ['.pill[href="#templates"]', 'Templates', '模板'],
+      // OVERVIEW
+      ['#overview h2', 'Goal &amp; Overview', '目标与概述'],
+      ['#overview .lead', 'An 8-week program to design and build an AI-powered school handbook assistant. Stage\u00a01 teaches HCI design through real user research. Stage\u00a02 teaches the technical skills to build and ship a working web app.', '一个8周的课程，帮助你设计并开发AI驱动的学校手册助手。第一阶段通过真实用户研究学习HCI设计，第二阶段掌握技术技能，开发并上线可运行的Web应用。'],
+      ['#overview .grid-3 .card:nth-child(1)', '<strong>Project</strong>AI School Handbook Assistant', '<strong>项目</strong>AI 学校手册助手'],
+      ['#overview .grid-3 .card:nth-child(2)', '<strong>Duration</strong>8 weeks total: 4 weeks design + 4 weeks build', '<strong>时长</strong>共8周：4周设计 + 4周开发'],
+      ['#overview .grid-3 .card:nth-child(3)', '<strong>Approach</strong>Design first, build second. Evidence before code.', '<strong>方法</strong>先设计，后开发。先有证据，再写代码。'],
+      ['#overview h3', 'Two Stages', '两个阶段'],
+      ['#overview .grid-2 .card:nth-child(1) > p', 'Understand real users, collect evidence, design and test a prototype.', '了解真实用户，收集证据，设计并测试原型。'],
+      ['#overview .grid-2 .card:nth-child(2) > p', 'Learn RAG &amp; ChromaDB, build a working web app, test and ship.', '学习RAG与ChromaDB，开发Web应用，测试并上线。'],
+      // REPORTS
+      ['#reports h2', 'Weekly Report Requirement', '每周报告要求'],
+      ['#reports .lead', 'Each week, you must submit a short written report documenting your progress, decisions, and reflections.', '每周需提交一份简短书面报告，记录本周进展、决策依据与反思总结。'],
+      ['#reports h3', 'Your report should include', '报告内容应包括'],
+      // WORKFLOW
+      ['#workflow h2', '8-Week Workflow', '8周工作流'],
+      ['#workflow > p.lead', 'Two stages, eight weeks. Design first, then build.', '两个阶段，八周时间。先设计，后开发。'],
+      ['#stage1', 'Stage 1 &mdash; HCI Design (Weeks 1&ndash;4)', '第一阶段 &mdash; HCI 设计（第1-4周）'],
+      ['#stage2', 'Stage 2 &mdash; Technical Build (Weeks 5&ndash;8)', '第二阶段 &mdash; 技术开发（第5-8周）'],
+      // TASK H2s
+      ['#task1 h2', 'Task 1 &mdash; Needfinding', '任务一 &mdash; 需求探索'],
+      ['#task2 h2', 'Task 2 &mdash; Data Collection &amp; Need Representation', '任务二 &mdash; 数据收集与需求表达'],
+      ['#task3 h2', 'Task 3 &mdash; Prototyping', '任务三 &mdash; 原型设计'],
+      ['#task4 h2', 'Task 4 &mdash; Evaluation', '任务四 &mdash; 用户测试'],
+      ['#task5 h2', 'Task 5 &mdash; Iteration', '任务五 &mdash; 迭代优化'],
+      ['#rag-lessons h2', 'Task 6 &mdash; RAG &amp; ChromaDB Concepts', '任务六 &mdash; RAG 与 ChromaDB 概念'],
+      ['#build-mvp h2', 'Task 7 &mdash; MVP Build', '任务七 &mdash; MVP 开发'],
+      ['#live-test h2', 'Task 8 &mdash; Live Testing &amp; Final Presentation', '任务八 &mdash; 上线测试与最终汇报'],
+      // CRITERIA & TEMPLATES
+      ['#criteria h2', 'Evaluation Criteria', '评估标准'],
+      ['#criteria .lead', 'Each task will be assessed on the following dimensions.', '每个任务将按以下维度进行评估。'],
+      ['#templates h2', 'Student Templates', '学生模板'],
+      ['#templates .lead', 'Ready-to-use templates for each task. Fill them in as you go &mdash; they match the outputs your teacher will review.', '每个任务的即用型模板，随进度填写——内容与老师评阅标准一一对应。'],
+      // STARTER & TEACHER PACK
+      ['#starter-code h2', 'Starter Code', '起始代码'],
+      ['#teacher-pack h2', 'Teacher Pack', '教师资料包'],
+      ['#teacher-pack .lead', 'Core materials for the full 8-week program.', '8周课程的核心教学资料。'],
+    ];
+
+    // Text-pattern replacements for repeated h3 sub-headings and week titles
+    var TP = [
+      ['Videos to Study', '学习视频'],
+      ['What to Learn', '学习目标'],
+      ['What to Do', '具体任务'],
+      ['Output', '成果输出'],
+      ['Week 1 \u2014 Understand and Plan', '第1周 \u2014 理解与规划'],
+      ['Week 2 \u2014 Design, Collect, and Analyze', '第2周 \u2014 设计、收集与分析'],
+      ['Week 3 \u2014 Prototype and Evaluate', '第3周 \u2014 原型设计与用户测试'],
+      ['Week 4 \u2014 Iterate and Reflect', '第4周 \u2014 迭代与反思'],
+      ['Week 5 \u2014 Learn RAG & ChromaDB', '第5周 \u2014 学习 RAG & ChromaDB'],
+      ['Week 6 \u2014 Build the Frontend', '第6周 \u2014 开发前端'],
+      ['Week 7 \u2014 Build the Backend & Deploy', '第7周 \u2014 开发后端与部署'],
+      ['Week 8 \u2014 Live Testing & Final Presentation', '第8周 \u2014 上线测试与最终汇报'],
+      ['Task 1: Needfinding', '任务一：需求探索'],
+      ['Task 2: Data Collection', '任务二：数据收集'],
+      ['Tasks 3 & 4: Prototyping + Evaluation', '任务三&四：原型 + 测试'],
+      ['Task 5: Iteration', '任务五：迭代优化'],
+      ['Task 6: RAG Concepts', '任务六：RAG概念'],
+      ['Task 7: MVP Build (Part 1)', '任务七：MVP开发（上）'],
+      ['Task 7: MVP Build (Part 2)', '任务七：MVP开发（下）'],
+      ['Task 8: Ship & Present', '任务八：上线与汇报'],
+    ];
+
+    function applyLang(l) {
+      lang = l;
+      localStorage.setItem('aishb-lang', l);
+      // Apply selector-based translations
+      T.forEach(function(item) {
+        document.querySelectorAll(item[0]).forEach(function(el) {
+          el.innerHTML = l === 'zh' ? item[2] : item[1];
+        });
+      });
+      // Apply text-pattern translations
+      document.querySelectorAll('.section h3:not([id]), .week-title h3, .week-title span, .output-box > strong').forEach(function(el) {
+        var text = el.textContent.trim();
+        TP.forEach(function(pair) {
+          if (l === 'zh' && text === pair[0]) el.textContent = pair[1];
+          else if (l === 'en' && text === pair[1]) el.textContent = pair[0];
+        });
+      });
+      var btn = document.getElementById('langToggle');
+      if (btn) btn.textContent = l === 'zh' ? 'EN' : '中文';
+      document.documentElement.lang = l === 'zh' ? 'zh' : 'en';
+    }
+
+    window.toggleLang = function() { applyLang(lang === 'zh' ? 'en' : 'zh'); };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (lang === 'zh') applyLang('zh');
+      var btn = document.getElementById('langToggle');
+      if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中文';
+    });
+  })();
+
   // Scrollspy: highlight active nav link based on visible section
   (function() {
     var navLinks = document.querySelectorAll('.nav a[href^="#"]');
