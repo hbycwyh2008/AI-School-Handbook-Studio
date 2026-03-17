@@ -154,6 +154,12 @@
       border-color: var(--line);
     }
 
+    .nav .nav-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 6px 0;
+    }
+
     .content { display: grid; gap: 22px; }
 
     .section {
@@ -434,6 +440,43 @@
       margin-top: 4px;
     }
 
+    .video-list {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .video-list li {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.08);
+      border: 1px solid rgba(139,92,246,0.18);
+      font-size: 14px;
+      margin: 0;
+    }
+    .video-list li::before {
+      content: "▶ ";
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    .output-box {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(52,211,153,0.3);
+      background: rgba(52,211,153,0.06);
+    }
+    .output-box strong {
+      display: block;
+      color: var(--good);
+      margin-bottom: 8px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
     .footer {
       text-align: center;
       color: var(--muted);
@@ -449,44 +492,32 @@
 
     @media (max-width: 680px) {
       .container { width: calc(100% - 24px); }
-
       .hero { padding: 24px 0 18px; }
       .hero-card { padding: 20px 16px; border-radius: 20px; }
       .hero p { font-size: 15px; }
       .eyebrow { font-size: 12px; padding: 6px 10px; gap: 6px; }
-
       .quick-links { gap: 8px; margin-top: 16px; }
       .pill { padding: 9px 12px; font-size: 13px; }
       .pill-demo { padding: 10px 16px; font-size: 14px; }
-
       .sidebar { padding: 14px; border-radius: 18px; }
       .nav a { padding: 9px 10px; font-size: 13px; }
-
       .section { padding: 18px 14px; border-radius: 18px; }
       .section h2 { font-size: 22px; }
       .section h3 { font-size: 17px; }
-
       .card { padding: 14px 12px; border-radius: 14px; }
-
       .week { padding: 14px 12px; border-radius: 16px; }
       .week-title { flex-direction: column; gap: 6px; }
       .week-title h3 { font-size: 17px; }
-
       .callout { padding: 12px 14px; border-radius: 14px; }
-
       .checklist-group { padding: 14px 12px; border-radius: 16px; }
       .checklist-header { flex-direction: column; align-items: flex-start; gap: 6px; }
       .checklist-header h3 { font-size: 16px; }
       .check-item { padding: 9px 10px; border-radius: 12px; font-size: 14px; }
-
       .rubric-table th,
       .rubric-table td { padding: 10px 8px; font-size: 13px; }
-
       details { padding: 12px 14px; border-radius: 14px; }
       summary { font-size: 15px; }
-
       .footer { padding: 16px 0 32px; font-size: 14px; }
-
       .tpl { padding: 14px 12px; border-radius: 16px; }
       .tpl-header { flex-direction: column; align-items: flex-start; }
       .tpl-row, .tpl-row-3 { grid-template-columns: 1fr; }
@@ -507,18 +538,20 @@
 <body>
   <div class="container hero">
     <div class="hero-card">
-      <div class="eyebrow">AI · HCI · Studio Teaching Pack</div>
+      <div class="eyebrow">HCI &middot; Needfinding &middot; Prototyping &middot; Evaluation</div>
       <h1>AI School Handbook Studio</h1>
-      <p>A structured, student-centered framework for guiding middle and high school learners through an HCI-driven AI product project with research, prototyping, RAG concepts, testing, iteration, and a working MVP.</p>
+      <p>An HCI-driven student task track: understand real user needs through needfinding, collect and analyze data, design a prototype grounded in evidence, evaluate with users, and iterate based on findings.</p>
       <div class="quick-links">
         <a class="pill pill-demo" href="https://ai-school-handbook-production.up.railway.app/" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
-        <a class="pill" href="#overview">Project Overview</a>
-        <a class="pill" href="#weeks">8-Week Plan</a>
-        <a class="pill" href="#templates">Templates</a>
-        <a class="pill" href="#checkpoints">Checkpoints</a>
-        <a class="pill" href="#rubric">Rubric</a>
-        <a class="pill" href="#rag-lessons">RAG Lessons</a>
-        <a class="pill" href="#teacher-pack">Teacher Pack</a>
+        <a class="pill" href="#overview">Goal</a>
+        <a class="pill" href="#workflow">4-Week Plan</a>
+        <a class="pill" href="#task1">Needfinding</a>
+        <a class="pill" href="#task2">Data Collection</a>
+        <a class="pill" href="#task3">Prototyping</a>
+        <a class="pill" href="#task4">Evaluation</a>
+        <a class="pill" href="#task5">Iteration</a>
+        <a class="pill" href="#criteria">Rubric</a>
+        <a class="pill" href="#starter-code">Starter Code</a>
       </div>
     </div>
   </div>
@@ -527,751 +560,606 @@
     <aside class="sidebar">
       <h3>Navigate</h3>
       <nav class="nav">
-        <a href="#overview">Project Overview</a>
-        <a href="#teacher-role">Teacher Role</a>
-        <a href="#teacher-provides">What the Teacher Provides</a>
-        <a href="#students-own">What Students Must Own</a>
-        <a href="#weeks">8-Week Teaching Plan</a>
-        <a href="#student-checklist">Student Master Checklist</a>
+        <a href="#overview">Goal &amp; Overview</a>
+        <a href="#reports">Weekly Reports</a>
+        <a href="#workflow">4-Week Workflow</a>
+        <div class="nav-divider"></div>
+        <a href="#task1">1 &mdash; Needfinding</a>
+        <a href="#task2">2 &mdash; Data Collection</a>
+        <a href="#task3">3 &mdash; Prototyping</a>
+        <a href="#task4">4 &mdash; Evaluation</a>
+        <a href="#task5">5 &mdash; Iteration</a>
+        <div class="nav-divider"></div>
+        <a href="#criteria">Evaluation Criteria</a>
         <a href="#templates">Student Templates</a>
-        <a href="#checkpoints">Checkpoint Forms</a>
-        <a href="#rubric">Teacher Rubric</a>
-        <a href="#starter-webpage">Starter Code</a>
-        <a href="#sample-ai-response">Sample AI Response</a>
-        <a href="#rag-lessons">RAG & ChromaDB Lessons</a>
-        <a href="#teacher-pack">Recommended Teacher Packet</a>
+        <a href="#starter-code">Starter Code</a>
+        <a href="#rag-lessons">RAG &amp; ChromaDB Lessons</a>
+        <a href="#teacher-pack">Teacher Pack</a>
       </nav>
     </aside>
 
     <main class="content">
+
+      <!-- GOAL & OVERVIEW -->
       <section id="overview" class="section">
-        <h2>Project Overview</h2>
-        <p class="lead">Students design and build an AI-powered school handbook experience for a real user group such as students, parents, teachers, or new families.</p>
+        <h2>Goal &amp; Overview</h2>
+        <p class="lead">Learn how to understand real user needs, choose appropriate needfinding methods, collect useful evidence, turn findings into requirements, design a simple prototype, evaluate it with users, and improve it through iteration.</p>
         <div class="grid-3">
-          <div class="card"><strong>Project Title</strong>AI School Handbook</div>
-          <div class="card"><strong>Driving Question</strong>How can we design an AI-powered school handbook experience that helps users find school information in a trustworthy and usable way?</div>
-          <div class="card"><strong>Core Blend</strong>HCI / UX process, AI product thinking, RAG understanding, prototype testing, iteration, and MVP development.</div>
+          <div class="card"><strong>Project</strong>AI School Handbook Assistant</div>
+          <div class="card"><strong>Core Process</strong>Needfinding &rarr; Requirements &rarr; Prototyping &rarr; Evaluation &rarr; Iteration</div>
+          <div class="card"><strong>Approach</strong>Evidence-driven HCI design: start with users, not code.</div>
         </div>
-        <h3>Required Project Elements</h3>
+
+        <h3>Five Tasks</h3>
+        <div class="grid-3" style="margin-top:10px;">
+          <div class="card"><strong>1. Needfinding</strong>Explore the problem space, identify users, choose research methods, define goals.</div>
+          <div class="card"><strong>2. Data Collection</strong>Design instruments, collect data, analyze findings, define requirements.</div>
+          <div class="card"><strong>3. Prototyping</strong>Generate design alternatives, build a testable low-fidelity prototype.</div>
+          <div class="card"><strong>4. Evaluation</strong>Test the prototype with real users using think-aloud, identify issues.</div>
+          <div class="card"><strong>5. Iteration</strong>Prioritize problems, revise the design, re-test, and reflect.</div>
+        </div>
+
+        <div class="callout warn" style="margin-top:18px;">
+          <strong>Do not start with coding.</strong> Start by understanding the users, the problem space, the most suitable needfinding methods, and what makes the system trustworthy. Your prototype should come from evidence, not assumptions.
+        </div>
+      </section>
+
+      <!-- WEEKLY REPORTS -->
+      <section id="reports" class="section">
+        <h2>Weekly Report Requirement</h2>
+        <p class="lead">Each week, you must submit a short written report documenting your progress, decisions, and reflections.</p>
+
+        <div class="callout good">
+          <strong>Format:</strong> Use the <strong>JDF (Joyner Document Format)</strong> template in <strong>Overleaf</strong>.<br>
+          Register for free: <a href="https://www.overleaf.com" target="_blank" style="color:var(--accent-2); text-decoration:underline;">overleaf.com</a><br>
+          JDF template: <a href="https://www.overleaf.com/latex/templates/jdf-for-cs-6750/vkqbhfrgxtgs" target="_blank" style="color:var(--accent-2); text-decoration:underline;">JDF for CS 6750</a>
+        </div>
+
+        <h3>Your report should include</h3>
         <ul>
-          <li>a clearly defined target user</li>
-          <li>user research</li>
-          <li>a focused problem statement</li>
-          <li>a prototype</li>
-          <li>an AI answer flow</li>
-          <li>citation or source visibility</li>
-          <li>at least one round of testing</li>
-          <li>at least one round of iteration</li>
+          <li>What you worked on this week</li>
+          <li>Key decisions you made and why</li>
+          <li>Any challenges or open questions</li>
+          <li>What you plan to do next</li>
         </ul>
-        <div class="callout good"><strong>Teaching principle:</strong> Give students the foundation, not the final answer.</div>
       </section>
 
-      <section id="teacher-role" class="section">
-        <h2>Teacher Role</h2>
-        <div class="grid-2">
-          <div class="card">
-            <strong>The Teacher Is</strong>
-            <ul>
-              <li>the studio lead</li>
-              <li>the framework provider</li>
-              <li>the concept explainer</li>
-              <li>the feedback and checkpoint reviewer</li>
-              <li>the scope manager</li>
-            </ul>
-          </div>
-          <div class="card">
-            <strong>The Teacher Is Not</strong>
-            <ul>
-              <li>the main builder</li>
-              <li>the main designer</li>
-              <li>the person making all decisions</li>
-              <li>the person writing the whole product for students</li>
-            </ul>
-          </div>
-        </div>
-        <div class="callout warn"><strong>Important:</strong> You may provide shared structure, AI concepts, and a minimal technical starter, but students must still own the user, the problem, the design choices, the testing decisions, the iteration decisions, and the final explanation of the system.</div>
-      </section>
+      <!-- 4-WEEK WORKFLOW -->
+      <section id="workflow" class="section">
+        <h2>Suggested 4-Week Workflow</h2>
+        <p class="lead">A structured timeline mapping each week to the HCI task sequence.</p>
 
-      <section id="teacher-provides" class="section">
-        <h2>What the Teacher Provides</h2>
-        <div class="grid-2">
-          <div class="card"><strong>1. Project Brief</strong>A shared project framing document with the project theme, required stages, deliverables, scope expectations, and final presentation expectations.</div>
-          <div class="card"><strong>2. Minimal Starter Webpage</strong>A lightweight starter UI such as page layout, header, input field, button, answer area, and citation placeholder. It should be a shell, not a completed product.</div>
-          <div class="card"><strong>3. Minimal Technical Starter</strong>A basic example of frontend-to-backend flow, one sample AI response structure, and a sample citation/source structure.</div>
-          <div class="card"><strong>4. Shared Concept Lessons</strong>Mini-lessons on what RAG is, why school handbook questions fit RAG, what ChromaDB is, what retrieval does, and why citation and trust matter.</div>
-          <div class="card"><strong>5. Process Structure</strong>A clear workflow: Research → Define → Prototype → Test → Build → Iterate → Present.</div>
-          <div class="card"><strong>6. Checkpoints and Rubric</strong>A review system that lets the teacher manage quality and scope without taking project ownership away from students.</div>
-        </div>
-      </section>
-
-      <section id="students-own" class="section">
-        <h2>What Students Must Own</h2>
-        <p class="lead">Students must make their own decisions about the heart of the product.</p>
-        <div class="grid-3">
-          <div class="card"><strong>User & Problem</strong>target users, user pain points, main task to solve</div>
-          <div class="card"><strong>Design Choices</strong>interface flow, citation / source presentation, prototype structure</div>
-          <div class="card"><strong>Evaluation</strong>usability testing tasks, MVP scope, final reflection</div>
-        </div>
-      </section>
-
-      <section id="weeks" class="section">
-        <h2>8-Week Teaching Plan</h2>
-        <p class="lead">A just-in-time learning structure: teach what students need right before they use it.</p>
-
-        <div class="week" id="week1">
-          <div class="week-title"><h3>Week 1 — Project Launch and Research Planning</h3><span>Checkpoint 1</span></div>
-          <h4>Teacher Mini-Lesson</h4>
+        <div class="week">
+          <div class="week-title"><h3>Week 1 &mdash; Understand and Plan</h3><span>Task 1: Needfinding</span></div>
           <ul>
-            <li>What is the AI School Handbook project?</li>
-            <li>What makes a good HCI / UX process?</li>
-            <li>What is a target user?</li>
-            <li>What is a real user problem?</li>
-            <li>Why should we avoid jumping straight to features?</li>
-          </ul>
-          <h4>Student Tasks</h4>
-          <ul>
-            <li>choose a target user group</li>
-            <li>identify a possible handbook-related problem</li>
-            <li>draft at least 5 interview questions</li>
-            <li>prepare a research plan</li>
+            <li>Watch the Needfinding videos (3.3.1, 3.3.3, 3.3.4, 3.3.6, 3.3.8, 3.3.11, 3.3.12, 3.3.15, 3.3.16, 3.3.20)</li>
+            <li>Choose your primary user group</li>
+            <li>Investigate 2&ndash;3 existing solutions</li>
+            <li>Decide which needfinding methods to use</li>
+            <li>Define your research goals</li>
+            <li><strong>Submit Week 1 report (JDF format via Overleaf)</strong></li>
           </ul>
         </div>
 
-        <div class="week" id="week2">
-          <div class="week-title"><h3>Week 2 — User Research</h3><span>Continue Checkpoint 1</span></div>
-          <h4>Teacher Mini-Lesson</h4>
+        <div class="week">
+          <div class="week-title"><h3>Week 2 &mdash; Design, Collect, and Analyze</h3><span>Task 2: Data Collection</span></div>
           <ul>
-            <li>how to ask open-ended questions</li>
-            <li>how to avoid leading questions</li>
-            <li>how to focus on behavior and pain points</li>
-            <li>how to capture quotes and observations</li>
-          </ul>
-          <h4>Student Tasks</h4>
-          <ul>
-            <li>interview at least 3 real users</li>
-            <li>record quotes and observations</li>
-            <li>identify repeated frustrations or needs</li>
+            <li>Watch the data collection and need representation videos (3.3.13, 3.3.17, 3.3.18, 3.3.25, 3.3.3)</li>
+            <li>Draft your survey or interview guide</li>
+            <li>Pilot and revise your questions</li>
+            <li>Conduct interviews, surveys, or focus groups</li>
+            <li>Analyze findings</li>
+            <li>Identify user needs, pain points, and trust concerns</li>
+            <li>Turn findings into initial requirements</li>
+            <li><strong>Submit Week 2 report (JDF format via Overleaf)</strong></li>
           </ul>
         </div>
 
-        <div class="week" id="week3">
-          <div class="week-title"><h3>Week 3 — Problem Definition</h3><span>Checkpoint 2</span></div>
-          <h4>Teacher Mini-Lesson</h4>
+        <div class="week">
+          <div class="week-title"><h3>Week 3 &mdash; Prototype and Evaluate</h3><span>Tasks 3 &amp; 4: Prototyping + Evaluation</span></div>
           <ul>
-            <li>difference between a need and a feature</li>
-            <li>how to identify pain points</li>
-            <li>how to define key tasks</li>
-            <li>how to write a challenge statement</li>
-            <li>how to create a simple persona</li>
-          </ul>
-          <h4>Student Tasks</h4>
-          <ul>
-            <li>identify the top 3 pain points</li>
-            <li>select 1 core problem to solve first</li>
-            <li>define 2 to 3 key user tasks</li>
-            <li>create a simple persona or user profile</li>
-            <li>write a challenge statement</li>
+            <li>Watch the Design Alternatives, Prototyping, and Design Principles videos</li>
+            <li>Create a simple prototype (mockup, not code)</li>
+            <li>Prepare evaluation tasks</li>
+            <li>Test the prototype with users using think-aloud</li>
+            <li>Record usability and trust-related issues</li>
+            <li><strong>Submit Week 3 report (JDF format via Overleaf)</strong></li>
           </ul>
         </div>
 
-        <div class="week" id="week4">
-          <div class="week-title"><h3>Week 4 — Concept Design and Information Flow</h3><span>Checkpoint 3</span></div>
-          <h4>Teacher Mini-Lesson</h4>
+        <div class="week">
+          <div class="week-title"><h3>Week 4 &mdash; Iterate and Reflect</h3><span>Task 5: Iteration</span></div>
           <ul>
-            <li>how to compare multiple ideas</li>
-            <li>what information architecture means</li>
-            <li>what the main user flow should include</li>
-            <li>where trust and citation should appear in the experience</li>
-            <li>how to narrow MVP scope early</li>
-          </ul>
-          <h4>Student Tasks</h4>
-          <ul>
-            <li>consider at least 2 solution ideas</li>
-            <li>choose 1 concept</li>
-            <li>define the main user flow</li>
-            <li>plan citation / source visibility</li>
-            <li>define what is included and not included in the MVP</li>
-          </ul>
-        </div>
-
-        <div class="week" id="week5">
-          <div class="week-title"><h3>Week 5 — Prototype Design</h3><span>Checkpoint 4</span></div>
-          <h4>Teacher Mini-Lesson</h4>
-          <ul>
-            <li>what makes a prototype testable</li>
-            <li>how to design a homepage / start page</li>
-            <li>how to design an answer/results page</li>
-            <li>how to design a citation/source page or source section</li>
-            <li>how to design for uncertainty and trust</li>
-          </ul>
-          <h4>Required Screens</h4>
-          <ul>
-            <li>homepage or starting page</li>
-            <li>answer/results page</li>
-            <li>citation/source page or source section</li>
-          </ul>
-        </div>
-
-        <div class="week" id="week6">
-          <div class="week-title"><h3>Week 6 — Prototype Testing and Revision</h3><span>Checkpoint 5</span></div>
-          <h4>Teacher Mini-Lesson</h4>
-          <ul>
-            <li>how to test a prototype</li>
-            <li>how to observe confusion</li>
-            <li>how to identify usability issues</li>
-            <li>how to prioritize revisions</li>
-            <li>how to pay attention to citation/trust understanding</li>
-          </ul>
-          <h4>Student Tasks</h4>
-          <ul>
-            <li>test prototype with at least 2 users</li>
-            <li>observe where users struggle</li>
-            <li>note whether users notice or understand citations</li>
-            <li>identify top usability issues</li>
-            <li>revise design plan</li>
-          </ul>
-        </div>
-
-        <div class="week" id="week7">
-          <div class="week-title"><h3>Week 7 — MVP Build</h3><span>Checkpoint 6</span></div>
-          <h4>Teacher Mini-Lesson</h4>
-          <ul>
-            <li>RAG overview</li>
-            <li>retrieve → answer → citation flow</li>
-            <li>ChromaDB basics</li>
-            <li>why metadata matters</li>
-            <li>what the MVP must do first</li>
-            <li>how to keep scope under control</li>
-          </ul>
-          <h4>Student Tasks</h4>
-          <ul>
-            <li>build the smallest useful version</li>
-            <li>connect question input to answer flow</li>
-            <li>include citation/source information</li>
-            <li>make the product usable for one key task</li>
-          </ul>
-        </div>
-
-        <div class="week" id="week8">
-          <div class="week-title"><h3>Week 8 — Live Testing, Iteration, and Final Presentation</h3><span>Checkpoints 7 & 8</span></div>
-          <h4>Teacher Mini-Lesson</h4>
-          <ul>
-            <li>how to test a real MVP</li>
-            <li>how to evaluate whether users trust the output</li>
-            <li>how to explain design decisions clearly</li>
-            <li>how to reflect on limits and improvements</li>
-          </ul>
-          <h4>Student Tasks</h4>
-          <ul>
-            <li>test the live MVP with real users</li>
-            <li>record results</li>
-            <li>identify remaining problems</li>
-            <li>make final improvements</li>
-            <li>prepare final presentation</li>
+            <li>Review the most important problems</li>
+            <li>Revise the design</li>
+            <li>Test the updated version again, if possible</li>
+            <li>Write a short reflection on what improved</li>
+            <li><strong>Submit Week 4 report (JDF format via Overleaf)</strong></li>
           </ul>
         </div>
       </section>
 
-      <section id="student-checklist" class="section">
-        <h2>Student Master Checklist</h2>
-        <p class="lead">A single master list students can use across the whole project, organized by phase.</p>
+      <!-- TASK 1: NEEDFINDING -->
+      <section id="task1" class="section">
+        <h2>Task 1 &mdash; Needfinding</h2>
 
-        <div class="checklist-group">
-          <div class="checklist-header">
-            <h3>Phase 1 — User Research</h3>
-            <span class="phase-tag">Weeks 1–2</span>
-          </div>
-          <div class="checklist">
-            <label class="check-item"><input type="checkbox"> <span>We identified a real target user.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We explained why this user needs help with the handbook.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We created at least 5 interview questions.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We interviewed at least 3 real users.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We collected at least 5 useful quotes or observations.</span></label>
-          </div>
+        <h3>What to Watch</h3>
+        <p class="muted">CS6750 HCI &ndash; 3.3 Needfinding and Requirements Gathering:</p>
+        <ul class="video-list">
+          <li>3.3.1 Introduction to Needfinding</li>
+          <li>3.3.3 The Problem Space</li>
+          <li>3.3.4 User Types</li>
+          <li>3.3.6 Naturalistic Observation</li>
+          <li>3.3.8 Participant Observation</li>
+          <li>3.3.11 Apprenticeship and Ethnography</li>
+          <li>3.3.12 Interviews and Focus Group</li>
+          <li>3.3.15 Think-aloud</li>
+          <li>3.3.16 Surveys</li>
+          <li>3.3.20 Other Data Gathering Methods</li>
+        </ul>
+
+        <h3>What to Learn</h3>
+        <h4>A. How to explore the problem space</h4>
+        <ul>
+          <li>Who the target users are</li>
+          <li>What handbook-related questions they commonly have</li>
+          <li>How they currently look for answers (school website, asking a teacher, searching online)</li>
+          <li>What difficulties or frustrations they experience</li>
+          <li>What makes them trust or distrust an AI-generated answer</li>
+        </ul>
+        <h4>B. Methods for needfinding</h4>
+        <ul>
+          <li>What methods can be used for needfinding</li>
+          <li>When to use interviews, surveys, or focus groups</li>
+          <li>What kind of information each method can help you gather</li>
+          <li>How to choose participants who match your target users</li>
+        </ul>
+        <h4>C. How to turn findings into requirements</h4>
+        <ul>
+          <li>How to identify patterns in user responses</li>
+          <li>How to represent user needs clearly</li>
+          <li>How to summarize pain points and trust concerns</li>
+          <li>How to translate findings into system requirements</li>
+        </ul>
+
+        <h3>What to Do</h3>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 1: Choose your primary users</strong>
+          <p>Recruit a small group of target users (students, parents, or teachers). Focus on one primary group.</p>
+          <p class="muted" style="font-size:14px;">Interviews: 3&ndash;5 participants &middot; Surveys: 10&ndash;20 respondents &middot; Focus groups: 4&ndash;6 per session</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 2: Investigate the current landscape</strong>
+          <p>Explore how users currently find handbook information. Review the school website, FAQ pages, or chatbot tools. Note 2&ndash;3 existing solutions with strengths and weaknesses.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 3: Choose your needfinding methods</strong>
+          <p>Decide which methods to use based on what you want to learn. Interviews for detailed experiences, surveys for broad patterns, focus groups for comparing views.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 4: Define your research goals</strong>
+          <p>Clearly state what you want to learn before writing any questions. For example: what topics are hardest to find? What does "trust" mean to users? When do users give up?</p>
         </div>
 
-        <div class="checklist-group">
-          <div class="checklist-header">
-            <h3>Phase 2 — Problem Definition</h3>
-            <span class="phase-tag">Week 3</span>
-          </div>
-          <div class="checklist">
-            <label class="check-item"><input type="checkbox"> <span>We identified 3 major pain points.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We selected 1 important problem to solve first.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We created 1 persona or user profile.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We listed 2 to 3 important user tasks.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We wrote a challenge statement.</span></label>
-          </div>
+        <div class="callout warn">
+          <strong>Ethics:</strong> When involving real participants, explain the study purpose, get consent, keep responses anonymous, and make participation voluntary.
         </div>
 
-        <div class="checklist-group">
-          <div class="checklist-header">
-            <h3>Phase 3 — Concept Design</h3>
-            <span class="phase-tag">Week 4</span>
-          </div>
-          <div class="checklist">
-            <label class="check-item"><input type="checkbox"> <span>We explored at least 2 solution ideas.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We explained why we chose our current idea.</span></label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <div class="checklist-header">
-            <h3>Phase 4 — Prototype Design</h3>
-            <span class="phase-tag">Week 5</span>
-          </div>
-          <div class="checklist">
-            <label class="check-item"><input type="checkbox"> <span>We designed a homepage or start page.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We designed an answer/results page.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We designed a citation/source page or source section.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We planned how users can verify the AI answer.</span></label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <div class="checklist-header">
-            <h3>Phase 5 — Prototype Testing & Iteration</h3>
-            <span class="phase-tag">Week 6</span>
-          </div>
-          <div class="checklist">
-            <label class="check-item"><input type="checkbox"> <span>We created 2 to 3 realistic test tasks.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We tested the prototype with at least 2 users.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We recorded where users became confused.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We identified 3 usability issues.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We chose the top issues to fix first.</span></label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <div class="checklist-header">
-            <h3>Phase 6 — MVP Build</h3>
-            <span class="phase-tag">Week 7</span>
-          </div>
-          <div class="checklist">
-            <label class="check-item"><input type="checkbox"> <span>We built a working question-and-answer flow.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>Our system can return an AI answer.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>Our system can show source/citation information.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>Users can see where the answer came from.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>Our MVP focuses on one main user task.</span></label>
-          </div>
-        </div>
-
-        <div class="checklist-group">
-          <div class="checklist-header">
-            <h3>Phase 7 — Live Testing & Final Reflection</h3>
-            <span class="phase-tag">Week 8</span>
-          </div>
-          <div class="checklist">
-            <label class="check-item"><input type="checkbox"> <span>We tested the live version with real users.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We observed whether users trusted the answer.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We can explain how RAG helps in this project.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We can explain why citation/source is important.</span></label>
-            <label class="check-item"><input type="checkbox"> <span>We can explain what we would improve next.</span></label>
-          </div>
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>Your target user group and why you chose them</li>
+            <li>A brief review of 2&ndash;3 existing solutions and their limitations</li>
+            <li>The needfinding methods you plan to use and why</li>
+            <li>Your main research goals</li>
+          </ul>
         </div>
       </section>
 
+      <!-- TASK 2: DATA COLLECTION -->
+      <section id="task2" class="section">
+        <h2>Task 2 &mdash; Data Collection &amp; Need Representation</h2>
+
+        <h3>What to Watch</h3>
+        <p class="muted">CS6750 HCI &ndash; 3.3 Needfinding and Requirements Gathering:</p>
+        <ul class="video-list">
+          <li>3.3.13 &ndash; 5 Tips: Interviews</li>
+          <li>3.3.17 &ndash; 5 Tips: Surveys</li>
+          <li>3.3.18 &ndash; Writing Good Survey Questions</li>
+          <li>3.3.25 &ndash; Representing the Need</li>
+          <li>3.3.3 &ndash; Defining the Requirement</li>
+        </ul>
+
+        <h3>What to Learn</h3>
+        <ul>
+          <li>How to write clear survey or interview questions</li>
+          <li>How to avoid biased, vague, leading, or double-barreled questions</li>
+          <li>How to design questions that match your research goals</li>
+          <li>How to revise weak questions if the first version is unclear</li>
+          <li>How to represent user needs in a structured and communicable form</li>
+          <li>How to translate needs into clear, actionable requirements</li>
+        </ul>
+
+        <h3>What to Do</h3>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 1: Design your instrument</strong>
+          <p>Design a short survey or interview guide. Write questions that help you understand user needs, current search behavior, common difficulties, and trust in AI answers.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 2: Pilot and revise</strong>
+          <p>Check for vague, leading, or double-barreled wording. Run a small pilot with 1&ndash;2 people. Revise based on feedback.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 3: Collect data</strong>
+          <p>Use your finalized instrument to gather data from your target users.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 4: Analyze findings and define requirements</strong>
+          <p>Identify repeated question types, common frustrations, trust-related concerns, and patterns across users. Define functional requirements and trust/usability requirements.</p>
+        </div>
+
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>A short survey draft or interview guide</li>
+            <li>A brief note explaining what the questions are meant to find out</li>
+            <li>A short note describing any revisions you made and why</li>
+            <li>A summary of findings: common question types, major pain points, trust requirements</li>
+            <li>Initial system requirements (both functional and trust-related)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TASK 3: PROTOTYPING -->
+      <section id="task3" class="section">
+        <h2>Task 3 &mdash; Prototyping</h2>
+
+        <h3>What to Watch</h3>
+        <ul class="video-list">
+          <li>CS6750 HCI &ndash; Lesson 3.4: Design Alternatives</li>
+          <li>CS6750 HCI &ndash; Lesson 3.5: Prototyping</li>
+          <li>2.5.5 Simplicity</li>
+          <li>2.5.6 Affordance</li>
+          <li>2.5.10 Perceptibility</li>
+          <li>2.5.11 Consistency</li>
+          <li>2.5.17 Constraints</li>
+        </ul>
+
+        <h3>What to Learn</h3>
+        <ul>
+          <li>How to generate multiple design ideas before committing to one</li>
+          <li>How to turn user needs and requirements into interface ideas</li>
+          <li>How to create a simple prototype before building the full system</li>
+          <li>How to represent the main interaction flow clearly</li>
+          <li>How to design for usability, clarity, and trust</li>
+        </ul>
+
+        <h3>Design Principles to Apply</h3>
+        <div class="grid-3" style="margin-top:10px;">
+          <div class="card"><strong>Simplicity</strong>Keep the interface focused; avoid unnecessary complexity.</div>
+          <div class="card"><strong>Affordance</strong>Make interactive elements look and behave as users expect.</div>
+          <div class="card"><strong>Perceptibility</strong>Make important information (sources, confidence cues) easy to notice.</div>
+        </div>
+        <div class="grid-2" style="margin-top:10px;">
+          <div class="card"><strong>Consistency</strong>Use consistent layout, wording, and interaction patterns throughout.</div>
+          <div class="card"><strong>Constraints</strong>Guide users toward valid actions and prevent errors.</div>
+        </div>
+
+        <h3>What to Do</h3>
+        <p>Create a simple prototype based on your needfinding results and requirements. Design a basic interface that allows users to:</p>
+        <ul>
+          <li>Enter a question</li>
+          <li>View an answer</li>
+          <li>View information that supports trust in the answer</li>
+          <li>Understand what happens when no good answer is found</li>
+        </ul>
+        <p>Trust-supporting information may include: handbook sources, relevant excerpts, uncertainty/confidence cues, update information, and suggestions for what to do next.</p>
+
+        <div class="callout">
+          <strong>Fidelity guidance:</strong> You do not need to write code. Paper sketches are fine for early exploration. Digital mockups (Figma, Balsamiq, etc.) are recommended for sharing and testing. The goal is to make your design <em>testable</em>, not polished.
+        </div>
+
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>A low-fidelity prototype or interactive mockup (not a coded application)</li>
+            <li>A short explanation of the main interaction flow</li>
+            <li>A brief note explaining how the design reflects your user requirements</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TASK 4: EVALUATION -->
+      <section id="task4" class="section">
+        <h2>Task 4 &mdash; Evaluation</h2>
+
+        <h3>What to Watch</h3>
+        <ul class="video-list">
+          <li>CS6750 HCI &ndash; Lesson 3.6: Evaluation</li>
+        </ul>
+
+        <h3>What to Learn</h3>
+        <ul>
+          <li>How to test a prototype with users</li>
+          <li>How to observe whether users can complete realistic tasks</li>
+          <li>How to identify confusion, trust issues, and usability problems</li>
+          <li>How to collect evidence for improvement</li>
+          <li>How to use the think-aloud protocol to capture user reasoning during tasks</li>
+        </ul>
+
+        <h3>What to Do</h3>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 1: Define your evaluation goals</strong>
+          <p>Decide what you want to learn: Can users find answers? Do they understand the source? Do they know what to do when the system is uncertain? Do they trust the result?</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 2: Choose your evaluation method</strong>
+          <p>Use task-based usability testing. Ask participants to <strong>think aloud</strong> &mdash; verbalize what they are thinking, expecting, and noticing. Optionally, supplement with a brief heuristic evaluation.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 3: Prepare realistic tasks</strong>
+          <p>Create tasks based on real handbook use cases: finding the attendance policy, checking a dress code rule, deciding whether an answer is trustworthy.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 4: Test with users</strong>
+          <p>Recruit 3&ndash;5 users from your target group. Record: task completion, time, confusion points, trust cue understanding, think-aloud comments.</p>
+          <p class="muted" style="font-size:14px;">Take notes during each session. A simple table with columns for task, success, time, and comments works well. Write a short summary after each session while details are fresh.</p>
+        </div>
+        <div class="card" style="margin-top:10px;">
+          <strong>Step 5: Identify issues</strong>
+          <p>Summarize the main usability and trust-related problems that appeared during testing.</p>
+        </div>
+
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>A short evaluation summary</li>
+            <li>A list of usability problems</li>
+            <li>A list of trust-related issues</li>
+            <li>A list of improvements that should be prioritized</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TASK 5: ITERATION -->
+      <section id="task5" class="section">
+        <h2>Task 5 &mdash; Iteration</h2>
+
+        <h3>What to Review</h3>
+        <p>No new video is required. If needed, revisit the sections on identifying usability issues and prioritizing improvements in CS6750 HCI &ndash; Lesson 3.6: Evaluation.</p>
+
+        <div class="callout">
+          <strong>Overall HCI process:</strong> Needfinding &rarr; Requirements &rarr; Prototyping &rarr; Evaluation &rarr; Iteration
+        </div>
+
+        <h3>What to Learn</h3>
+        <ul>
+          <li>How to improve a design based on evidence</li>
+          <li>How to prioritize the most important problems</li>
+          <li>How to revise a prototype step by step</li>
+          <li>How to use evaluation results to guide the next version</li>
+        </ul>
+
+        <h3>What to Do</h3>
+        <ul>
+          <li>Review the problems found during evaluation</li>
+          <li>Choose a few high-priority issues to fix</li>
+          <li>Revise the prototype</li>
+          <li>Test the updated version again with 2&ndash;3 users, if possible</li>
+          <li>Reflect on whether the changes improved the experience</li>
+        </ul>
+        <p>Focus first on issues that strongly affect: task completion, clarity, trust, and user confidence.</p>
+
+        <div class="output-box">
+          <strong>Output</strong>
+          <ul>
+            <li>A revised prototype</li>
+            <li>A short change log describing: what was changed, why, what evidence motivated the change, and whether the revision improved the experience</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- EVALUATION CRITERIA -->
+      <section id="criteria" class="section">
+        <h2>Evaluation Criteria</h2>
+        <p class="lead">Each task will be assessed on the following dimensions.</p>
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>What Makes It Strong</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Needfinding</strong></td>
+              <td>Based on a clear user group; includes landscape review; research goals are specific and relevant</td>
+            </tr>
+            <tr>
+              <td><strong>2. Data Collection &amp; Need Representation</strong></td>
+              <td>Questions are clear, unbiased, and aligned with goals; instrument design choices are justified; revisions are explained; findings are grounded in real data; needs are clearly represented; requirements cover both function and trust</td>
+            </tr>
+            <tr>
+              <td><strong>3. Prototyping</strong></td>
+              <td>Reflects the requirements; interaction flow is clear; includes trust-supporting elements; applies relevant design principles (simplicity, affordance, perceptibility, consistency, constraints); appropriate fidelity</td>
+            </tr>
+            <tr>
+              <td><strong>4. Evaluation</strong></td>
+              <td>Uses realistic tasks; involves real users; observations are specific and evidence-based; issues are clearly identified</td>
+            </tr>
+            <tr>
+              <td><strong>5. Iteration</strong></td>
+              <td>Prioritizes the right problems; changes are justified by evidence; reflection is honest and thoughtful</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- STUDENT TEMPLATES -->
       <section id="templates" class="section">
         <h2>Student Templates</h2>
-        <p class="lead">Ready-to-use templates for each project phase. Fill them in as you go — they match the checkpoints your teacher will review.</p>
+        <p class="lead">Ready-to-use templates for each task. Fill them in as you go &mdash; they match the outputs your teacher will review.</p>
 
+        <!-- Template 1: Needfinding -->
         <div class="tpl">
           <div class="tpl-header">
-            <h3>Template 1 — User Research</h3>
-            <span class="phase-tag">Weeks 1–2</span>
+            <h3>Template 1 &mdash; Needfinding</h3>
+            <span class="phase-tag">Week 1</span>
           </div>
-
           <div class="tpl-field">
             <label>Target User Group</label>
             <input type="text" placeholder="e.g. New 9th-grade students and their parents">
           </div>
           <div class="tpl-field">
             <label>Why does this user need help with the school handbook?</label>
-            <textarea placeholder="Describe the situation: what makes it hard for them to find information?"></textarea>
+            <textarea placeholder="Describe the situation: what makes it hard for them?"></textarea>
           </div>
+          <div class="tpl-field">
+            <label>Existing Solutions Reviewed (2&ndash;3)</label>
+            <textarea class="tall" placeholder="Solution 1: school website — strengths / weaknesses&#10;Solution 2: asking a teacher — strengths / weaknesses&#10;Solution 3: ..."></textarea>
+          </div>
+          <div class="tpl-field">
+            <label>Needfinding Methods You Will Use</label>
+            <textarea placeholder="e.g. Interviews (for detailed experiences) + Surveys (for broader patterns)&#10;Why: ..."></textarea>
+          </div>
+          <div class="tpl-field">
+            <label>Research Goals</label>
+            <textarea placeholder="Goal 1: What handbook topics are hardest to find?&#10;Goal 2: What does 'trust' in an AI answer mean to users?&#10;Goal 3: When do users give up?"></textarea>
+          </div>
+        </div>
 
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>Interview Questions</strong> <span class="tpl-hint">(write at least 5 open-ended questions)</span></p>
-          <div class="tpl-field"><input type="text" placeholder="Q1: e.g. When was the last time you looked for information in the handbook? What happened?"></div>
+        <!-- Template 2: Data Collection -->
+        <div class="tpl">
+          <div class="tpl-header">
+            <h3>Template 2 &mdash; Data Collection &amp; Need Representation</h3>
+            <span class="phase-tag">Week 2</span>
+          </div>
+          <p style="margin-bottom:8px;"><strong>Survey / Interview Questions</strong> <span class="tpl-hint">(at least 5 questions aligned with research goals)</span></p>
+          <div class="tpl-field"><input type="text" placeholder="Q1: e.g. When was the last time you tried to find something in the handbook? What happened?"></div>
           <div class="tpl-field"><input type="text" placeholder="Q2:"></div>
           <div class="tpl-field"><input type="text" placeholder="Q3:"></div>
           <div class="tpl-field"><input type="text" placeholder="Q4:"></div>
           <div class="tpl-field"><input type="text" placeholder="Q5:"></div>
-
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>Interview Notes</strong> <span class="tpl-hint">(record quotes and observations for each user)</span></p>
-          <div class="tpl-row-3">
-            <div class="tpl-slot">
-              <strong>User 1</strong>
-              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / relationship to school"></div>
-              <div class="tpl-field"><label>Key Quotes</label><textarea placeholder="Paste direct quotes..."></textarea></div>
-              <div class="tpl-field"><label>Observations</label><textarea placeholder="What did you notice about their behavior?"></textarea></div>
+          <div class="tpl-field" style="margin-top:18px;">
+            <label>What are the questions meant to find out?</label>
+            <textarea placeholder="Briefly explain the purpose behind each question..."></textarea>
+          </div>
+          <div class="tpl-field">
+            <label>Revisions Made After Pilot</label>
+            <textarea placeholder="What did you change and why? e.g. Q3 was too vague, so we made it more specific..."></textarea>
+          </div>
+          <div class="tpl-field">
+            <label>Summary of Findings</label>
+            <textarea class="tall" placeholder="Common question types:&#10;Major pain points:&#10;Trust concerns:&#10;Patterns across users:"></textarea>
+          </div>
+          <div class="tpl-row" style="margin-top:12px;">
+            <div class="tpl-field">
+              <label>Functional Requirements</label>
+              <textarea placeholder="What must the system do?&#10;e.g. Answer handbook questions with source references"></textarea>
             </div>
-            <div class="tpl-slot">
-              <strong>User 2</strong>
-              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / relationship to school"></div>
-              <div class="tpl-field"><label>Key Quotes</label><textarea placeholder="Paste direct quotes..."></textarea></div>
-              <div class="tpl-field"><label>Observations</label><textarea placeholder="What did you notice about their behavior?"></textarea></div>
-            </div>
-            <div class="tpl-slot">
-              <strong>User 3</strong>
-              <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / relationship to school"></div>
-              <div class="tpl-field"><label>Key Quotes</label><textarea placeholder="Paste direct quotes..."></textarea></div>
-              <div class="tpl-field"><label>Observations</label><textarea placeholder="What did you notice about their behavior?"></textarea></div>
+            <div class="tpl-field">
+              <label>Trust &amp; Usability Requirements</label>
+              <textarea placeholder="What must the system do well for users to trust it?&#10;e.g. Show where the answer came from"></textarea>
             </div>
           </div>
         </div>
 
+        <!-- Template 3: Prototyping -->
         <div class="tpl">
           <div class="tpl-header">
-            <h3>Template 2 — Problem Definition</h3>
+            <h3>Template 3 &mdash; Prototyping</h3>
             <span class="phase-tag">Week 3</span>
           </div>
-
-          <p style="margin-bottom:8px;"><strong>Top 3 Pain Points</strong> <span class="tpl-hint">(from your research, what frustrated users the most?)</span></p>
-          <div class="tpl-field"><input type="text" placeholder="Pain Point 1: e.g. Users cannot find lunch schedule quickly"></div>
-          <div class="tpl-field"><input type="text" placeholder="Pain Point 2:"></div>
-          <div class="tpl-field"><input type="text" placeholder="Pain Point 3:"></div>
-
-          <div class="tpl-field" style="margin-top:18px;">
-            <label>The ONE problem we will solve first</label>
-            <textarea placeholder="Which pain point is most important? Why?"></textarea>
+          <div class="tpl-field">
+            <label>Main Interaction Flow</label>
+            <textarea class="tall" placeholder="Step 1: User opens the app and sees...&#10;Step 2: User types a question about...&#10;Step 3: The system shows an answer with...&#10;Step 4: User can see the source by...&#10;Step 5: If no answer is found, the system shows..."></textarea>
           </div>
-
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>Persona Card</strong></p>
-          <div class="tpl-row">
-            <div class="tpl-field"><label>Name & Role</label><input type="text" placeholder="e.g. Emma, 9th-grade new student"></div>
-            <div class="tpl-field"><label>Context</label><input type="text" placeholder="e.g. Just transferred from another city"></div>
+          <div class="tpl-field">
+            <label>How does the design reflect your user requirements?</label>
+            <textarea placeholder="Explain how specific design choices address the needs and trust concerns you identified..."></textarea>
           </div>
-          <div class="tpl-row">
-            <div class="tpl-field"><label>Goals / Wants</label><textarea placeholder="What does this person want to accomplish?"></textarea></div>
-            <div class="tpl-field"><label>Frustrations</label><textarea placeholder="What makes it hard for them right now?"></textarea></div>
+          <div class="tpl-field">
+            <label>Design Principles Applied</label>
+            <textarea placeholder="Simplicity: we kept the interface to...&#10;Affordance: the question input looks like...&#10;Perceptibility: sources are shown by...&#10;Consistency: we used the same layout for...&#10;Constraints: we prevent errors by..."></textarea>
           </div>
-
-          <div class="tpl-field" style="margin-top:18px;">
-            <label>Challenge Statement</label>
-            <input type="text" placeholder="How might we help [user] to [do something] so that [benefit]?">
-            <p class="tpl-hint">Format: "How might we help [user] to [action] so that [outcome]?"</p>
-          </div>
-
-          <div class="tpl-field" style="margin-top:12px;">
-            <label>Key User Tasks (2–3 tasks your product should support)</label>
-            <textarea placeholder="Task 1: e.g. Find today's class schedule in under 10 seconds&#10;Task 2: &#10;Task 3: "></textarea>
-          </div>
+          <p class="tpl-hint">Attach your prototype screenshots or mockup link (Figma, Balsamiq, paper sketch photo, etc.)</p>
         </div>
 
+        <!-- Template 4: Evaluation -->
         <div class="tpl">
           <div class="tpl-header">
-            <h3>Template 3 — Concept & Scope</h3>
-            <span class="phase-tag">Week 4</span>
+            <h3>Template 4 &mdash; Evaluation</h3>
+            <span class="phase-tag">Week 3</span>
           </div>
-
-          <p style="margin-bottom:8px;"><strong>Solution Ideas</strong> <span class="tpl-hint">(compare at least 2 ideas before choosing)</span></p>
-          <div class="tpl-row">
-            <div class="tpl-slot">
-              <strong>Idea A</strong>
-              <div class="tpl-field"><label>Description</label><textarea placeholder="What would this solution look like?"></textarea></div>
-              <div class="tpl-field"><label>Pros</label><textarea placeholder="Why might this work well?"></textarea></div>
-              <div class="tpl-field"><label>Cons</label><textarea placeholder="What are the risks or downsides?"></textarea></div>
-            </div>
-            <div class="tpl-slot">
-              <strong>Idea B</strong>
-              <div class="tpl-field"><label>Description</label><textarea placeholder="What would this solution look like?"></textarea></div>
-              <div class="tpl-field"><label>Pros</label><textarea placeholder="Why might this work well?"></textarea></div>
-              <div class="tpl-field"><label>Cons</label><textarea placeholder="What are the risks or downsides?"></textarea></div>
-            </div>
-          </div>
-
-          <div class="tpl-field" style="margin-top:18px;">
-            <label>We chose Idea ___ because</label>
-            <textarea placeholder="Explain why this idea best fits your user's needs..."></textarea>
-          </div>
-
           <div class="tpl-field">
-            <label>Main User Flow</label>
-            <textarea class="tall" placeholder="Step 1: User opens the app and sees...&#10;Step 2: User types a question about...&#10;Step 3: The system retrieves...&#10;Step 4: User sees the answer with...&#10;Step 5: User can check the source by..."></textarea>
+            <label>Evaluation Goals</label>
+            <textarea placeholder="What do you want to learn from the test?&#10;e.g. Can users find answers? Do they trust the source?"></textarea>
           </div>
-
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>MVP Scope</strong></p>
-          <div class="tpl-row">
-            <div class="tpl-field"><label>Must Have (in MVP)</label><textarea class="tall" placeholder="- Ask a question and get an answer&#10;- See which handbook section the answer came from&#10;- ..."></textarea></div>
-            <div class="tpl-field"><label>NOT in MVP (maybe later)</label><textarea class="tall" placeholder="- Multi-language support&#10;- User accounts&#10;- ..."></textarea></div>
-          </div>
-        </div>
-
-        <div class="tpl">
-          <div class="tpl-header">
-            <h3>Template 4 — Prototype Testing</h3>
-            <span class="phase-tag">Weeks 5–6</span>
-          </div>
-
           <div class="tpl-field">
-            <label>Test Tasks (2–3 realistic things you ask testers to do)</label>
-            <textarea placeholder="Task 1: Find out what time the library closes on Friday.&#10;Task 2: Check what the dress code says about hats.&#10;Task 3: "></textarea>
+            <label>Test Tasks (2&ndash;3 realistic tasks)</label>
+            <textarea placeholder="Task 1: Find out what time the library closes on Friday&#10;Task 2: Check what the dress code says about hats&#10;Task 3: Decide whether you trust the answer about late assignments"></textarea>
           </div>
 
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>Testing Observations</strong> <span class="tpl-hint">(one card per tester)</span></p>
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Testing Observations</strong> <span class="tpl-hint">(one card per tester, using think-aloud)</span></p>
           <div class="tpl-row">
             <div class="tpl-slot">
               <strong>Tester 1</strong>
               <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / grade / age"></div>
-              <div class="tpl-field"><label>What went well</label><textarea placeholder="What did they complete easily?"></textarea></div>
-              <div class="tpl-field"><label>Where they struggled</label><textarea placeholder="Where did they pause, look confused, or make mistakes?"></textarea></div>
-              <div class="tpl-field"><label>Did they notice citations?</label><textarea placeholder="Did they check the source? Did they understand it?"></textarea></div>
+              <div class="tpl-field"><label>Task completion</label><textarea placeholder="Which tasks did they complete? How long?"></textarea></div>
+              <div class="tpl-field"><label>Confusion / struggles</label><textarea placeholder="Where did they pause or look confused?"></textarea></div>
+              <div class="tpl-field"><label>Trust cues</label><textarea placeholder="Did they notice or understand the sources?"></textarea></div>
+              <div class="tpl-field"><label>Think-aloud notes</label><textarea placeholder="Key things they said while using the prototype..."></textarea></div>
             </div>
             <div class="tpl-slot">
               <strong>Tester 2</strong>
               <div class="tpl-field"><label>Who</label><input type="text" placeholder="Role / grade / age"></div>
-              <div class="tpl-field"><label>What went well</label><textarea placeholder="What did they complete easily?"></textarea></div>
-              <div class="tpl-field"><label>Where they struggled</label><textarea placeholder="Where did they pause, look confused, or make mistakes?"></textarea></div>
-              <div class="tpl-field"><label>Did they notice citations?</label><textarea placeholder="Did they check the source? Did they understand it?"></textarea></div>
+              <div class="tpl-field"><label>Task completion</label><textarea placeholder="Which tasks did they complete? How long?"></textarea></div>
+              <div class="tpl-field"><label>Confusion / struggles</label><textarea placeholder="Where did they pause or look confused?"></textarea></div>
+              <div class="tpl-field"><label>Trust cues</label><textarea placeholder="Did they notice or understand the sources?"></textarea></div>
+              <div class="tpl-field"><label>Think-aloud notes</label><textarea placeholder="Key things they said while using the prototype..."></textarea></div>
             </div>
           </div>
 
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>Usability Issues</strong></p>
-          <div class="tpl-field"><input type="text" placeholder="Issue 1 (most critical): e.g. Users didn't see the source section at all"></div>
+          <p style="margin-top:18px;margin-bottom:8px;"><strong>Usability &amp; Trust Issues</strong></p>
+          <div class="tpl-field"><input type="text" placeholder="Issue 1 (most critical): e.g. Users didn't see the source section"></div>
           <div class="tpl-field"><input type="text" placeholder="Issue 2:"></div>
           <div class="tpl-field"><input type="text" placeholder="Issue 3:"></div>
           <div class="tpl-field" style="margin-top:12px;">
-            <label>What we will fix before building the MVP</label>
-            <textarea placeholder="Describe the changes you plan to make based on testing..."></textarea>
+            <label>Improvements to Prioritize</label>
+            <textarea placeholder="Which issues will you fix first and why?"></textarea>
           </div>
         </div>
 
+        <!-- Template 5: Iteration -->
         <div class="tpl">
           <div class="tpl-header">
-            <h3>Template 5 — MVP Build Plan</h3>
-            <span class="phase-tag">Week 7</span>
+            <h3>Template 5 &mdash; Iteration</h3>
+            <span class="phase-tag">Week 4</span>
           </div>
-
           <div class="tpl-field">
-            <label>The ONE main thing our MVP must do well</label>
-            <input type="text" placeholder="e.g. Answer handbook questions about daily schedules with source citations">
+            <label>High-Priority Issues Selected</label>
+            <textarea placeholder="Which 2&ndash;3 problems are you fixing? Why these ones first?"></textarea>
           </div>
-
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>System Architecture</strong> <span class="tpl-hint">(describe each part in plain language)</span></p>
-          <div class="tpl-row">
-            <div class="tpl-field"><label>Frontend (what the user sees)</label><textarea placeholder="e.g. A search page with a question box, an answer card, and a sources list below it"></textarea></div>
-            <div class="tpl-field"><label>Backend (what happens behind the scenes)</label><textarea placeholder="e.g. Takes the question, searches ChromaDB for matching handbook chunks, sends them to GPT, returns the answer"></textarea></div>
-          </div>
-          <div class="tpl-row" style="margin-top:12px;">
-            <div class="tpl-field"><label>Answer Flow</label><textarea placeholder="User question → embed question → search ChromaDB → get top 3 chunks → send to LLM with prompt → return answer"></textarea></div>
-            <div class="tpl-field"><label>Citation Flow</label><textarea placeholder="Each chunk has metadata (section, page) → display metadata under the answer → user can click to see original text"></textarea></div>
-          </div>
-
-          <div class="tpl-field" style="margin-top:18px;">
-            <label>Why is RAG useful for this project?</label>
-            <textarea placeholder="Explain in your own words why RAG is a good fit for a school handbook assistant..."></textarea>
-          </div>
-        </div>
-
-        <div class="tpl">
-          <div class="tpl-header">
-            <h3>Template 6 — Live Testing & Final Reflection</h3>
-            <span class="phase-tag">Week 8</span>
-          </div>
-
           <div class="tpl-field">
-            <label>MVP Link or Location</label>
-            <input type="text" placeholder="e.g. https://our-project.railway.app or classroom demo on laptop #3">
+            <label>Change Log</label>
+            <textarea class="tall" placeholder="Change 1: [what was changed] — Why: [evidence from evaluation]&#10;Change 2: [what was changed] — Why: [evidence from evaluation]&#10;Change 3: ..."></textarea>
           </div>
-
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>Live Test Results</strong></p>
-          <div class="tpl-row">
-            <div class="tpl-slot">
-              <strong>Tester 1</strong>
-              <div class="tpl-field"><label>Task</label><input type="text" placeholder="What did you ask them to do?"></div>
-              <div class="tpl-field"><label>Success?</label><input type="text" placeholder="Yes / Partially / No"></div>
-              <div class="tpl-field"><label>Did they trust the answer?</label><textarea placeholder="Why or why not?"></textarea></div>
-              <div class="tpl-field"><label>Did they use citations?</label><textarea placeholder="Did they check the source?"></textarea></div>
-            </div>
-            <div class="tpl-slot">
-              <strong>Tester 2</strong>
-              <div class="tpl-field"><label>Task</label><input type="text" placeholder="What did you ask them to do?"></div>
-              <div class="tpl-field"><label>Success?</label><input type="text" placeholder="Yes / Partially / No"></div>
-              <div class="tpl-field"><label>Did they trust the answer?</label><textarea placeholder="Why or why not?"></textarea></div>
-              <div class="tpl-field"><label>Did they use citations?</label><textarea placeholder="Did they check the source?"></textarea></div>
-            </div>
+          <div class="tpl-field">
+            <label>Re-testing Results (if applicable)</label>
+            <textarea placeholder="Did you re-test with users? What improved? What still needs work?"></textarea>
           </div>
-
-          <p style="margin-top:18px;margin-bottom:8px;"><strong>Final Reflection</strong></p>
-          <div class="tpl-field"><label>What is our product and who is it for?</label><textarea placeholder="One paragraph summary..."></textarea></div>
-          <div class="tpl-field"><label>How did our research change our design?</label><textarea placeholder="Give a specific example of a decision that changed because of what you learned from users..."></textarea></div>
-          <div class="tpl-field"><label>Why do citations matter in an AI product?</label><textarea placeholder="Explain why showing the source is important for user trust..."></textarea></div>
-          <div class="tpl-field"><label>What would we improve if we had 2 more weeks?</label><textarea placeholder="Be specific about what you'd change and why..."></textarea></div>
+          <div class="tpl-field">
+            <label>Final Reflection</label>
+            <textarea class="tall" placeholder="What did you learn from this process? How did evidence change your design? What would you do differently next time?"></textarea>
+          </div>
+          <p class="tpl-hint">Attach your revised prototype screenshots or mockup link.</p>
         </div>
-
-        <div class="callout good"><strong>Tip:</strong> You can fill in these templates directly on this page, or copy the questions into your own document. Either way, have your answers ready before each checkpoint review.</div>
       </section>
 
-      <section id="checkpoints" class="section">
-        <h2>Checkpoint Forms</h2>
-        <p class="lead">Use these as review gates. Students move forward only after each checkpoint is approved.</p>
-
-        <details open>
-          <summary>Checkpoint 1 — Research Approval Form</summary>
-          <ul>
-            <li><strong>Target User:</strong> Who is your main target user? Why does this user need help with the school handbook?</li>
-            <li><strong>Research Focus:</strong> What problem do you think this user may have? What do you want to learn from interviews?</li>
-            <li><strong>Interview Plan:</strong> Who will you interview? How many people? Why did you choose them?</li>
-            <li><strong>Interview Questions:</strong> Write at least 5 open-ended questions.</li>
-            <li><strong>Teacher Check:</strong> clear user, realistic interview plan, open questions, no feature-jumping.</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Checkpoint 2 — Problem Definition Approval Form</summary>
-          <ul>
-            <li><strong>Research Summary:</strong> 3 to 5 important things learned from users.</li>
-            <li><strong>Key Quotes:</strong> at least 3 real quotes or observations.</li>
-            <li><strong>Pain Points:</strong> top 3 pain points.</li>
-            <li><strong>Main Problem:</strong> the one problem the team will solve first.</li>
-            <li><strong>Persona:</strong> user type, role, wants, frustrations, and why the problem matters.</li>
-            <li><strong>Challenge Statement:</strong> How might we... ?</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Checkpoint 3 — Concept Approval Form</summary>
-          <ul>
-            <li>List at least 2 possible solution ideas.</li>
-            <li>Explain which concept you chose and why.</li>
-            <li>Describe the main user flow.</li>
-            <li>Describe the citation / trust plan.</li>
-            <li>Define what is included and not included in MVP.</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Checkpoint 4 — Prototype Approval Form</summary>
-          <ul>
-            <li>Required screens: homepage, answer/results page, citation/source page or section.</li>
-            <li>Explain homepage rationale, first action, source checking, uncertain answers, and biggest uncertainty.</li>
-            <li>Prepare 2 to 3 prototype test tasks.</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Checkpoint 5 — Prototype Testing Review Form</summary>
-          <ul>
-            <li>List test participants and tasks.</li>
-            <li>Record what users did well and where they struggled.</li>
-            <li>Record whether users noticed or understood citations.</li>
-            <li>Identify top 3 usability problems.</li>
-            <li>State what will change before building.</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Checkpoint 6 — MVP Scope Approval Form</summary>
-          <ul>
-            <li>State the one main thing the MVP must do well.</li>
-            <li>List core features.</li>
-            <li>List features intentionally excluded.</li>
-            <li>Explain frontend, backend, answer flow, and citation flow.</li>
-            <li>Explain what the system retrieves and why RAG is useful.</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Checkpoint 7 — Live Testing Review Form</summary>
-          <ul>
-            <li>Link or location of tested MVP.</li>
-            <li>List test participants and tasks.</li>
-            <li>For each task, note success, hesitation, answer understanding, and citation use.</li>
-            <li>Explain whether users trusted the answer and why.</li>
-            <li>List main problems and next improvements.</li>
-          </ul>
-        </details>
-
-        <details>
-          <summary>Checkpoint 8 — Final Reflection Form</summary>
-          <ul>
-            <li>Summarize the final product.</li>
-            <li>Explain user, problem, and why it matters.</li>
-            <li>Explain design decisions and how research affected them.</li>
-            <li>Explain why citation/source matters.</li>
-            <li>Explain why RAG is useful here.</li>
-            <li>Reflect on what changed after testing and what should improve next.</li>
-          </ul>
-        </details>
-      </section>
-
-      <section id="rubric" class="section">
-        <h2>Teacher Rubric</h2>
-        <p class="lead">Use a 4-level scale: <strong>4 = Strong</strong>, <strong>3 = Proficient</strong>, <strong>2 = Developing</strong>, <strong>1 = Beginning</strong>.</p>
-        <table class="rubric-table">
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>4 — Strong</th>
-              <th>3 — Proficient</th>
-              <th>2 — Developing</th>
-              <th>1 — Beginning</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>User Research</strong></td>
-              <td>Clear target user, real interview evidence, strong context understanding, research clearly influences design.</td>
-              <td>Reasonably clear user, basic interviews, some useful findings, research mostly connects to design.</td>
-              <td>Vague user group, limited research, general findings, weak design connection.</td>
-              <td>No clear user group, little or no research, design mostly based on guessing.</td>
-            </tr>
-            <tr>
-              <td><strong>Problem Definition</strong></td>
-              <td>Clear and focused problem, evidence-based pain points, meaningful tasks, strong scope control.</td>
-              <td>Mostly clear problem, reasonable pain points and tasks, manageable scope.</td>
-              <td>Broad or vague problem, weak distinction between needs and features, scope may be too wide.</td>
-              <td>Problem is unclear, needs and features are confused, scope is unfocused.</td>
-            </tr>
-            <tr>
-              <td><strong>HCI / UX Design Quality</strong></td>
-              <td>Design strongly supports task, source visibility is useful, trust and uncertainty handled thoughtfully.</td>
-              <td>Design supports the main task, source visibility exists and is usable, trust is considered.</td>
-              <td>Design is somewhat confusing, source visibility is weak or poorly integrated.</td>
-              <td>Design does not support user tasks well, source visibility is missing or unclear.</td>
-            </tr>
-            <tr>
-              <td><strong>Prototype, Testing, and Iteration</strong></td>
-              <td>Prototype is testable, findings are specific, major usability issues identified, revisions are meaningful.</td>
-              <td>Prototype is usable, testing completed, main issues identified, some revision completed.</td>
-              <td>Prototype is incomplete or hard to test, testing is limited, findings are general.</td>
-              <td>Little or no testing, no meaningful iteration.</td>
-            </tr>
-            <tr>
-              <td><strong>AI / RAG Understanding</strong></td>
-              <td>Clearly explains why RAG fits, understands retrieve → answer → citation flow, connects AI decisions to user needs.</td>
-              <td>Basic understanding of RAG, can explain the system flow, knows citation is important.</td>
-              <td>Surface-level understanding, partial explanation of system flow.</td>
-              <td>Cannot clearly explain why RAG is used or how answer/source relate.</td>
-            </tr>
-            <tr>
-              <td><strong>Technical Implementation</strong></td>
-              <td>MVP works reliably for the main task, answer flow and source flow both function.</td>
-              <td>MVP mostly works, core features are present, source support is mostly functional.</td>
-              <td>MVP is partially working, core flow is unstable or incomplete.</td>
-              <td>MVP does not work well, major pieces are missing.</td>
-            </tr>
-            <tr>
-              <td><strong>Scope Control and Product Thinking</strong></td>
-              <td>Solves one important problem well, clear must-have vs nice-to-have distinction, strong prioritization.</td>
-              <td>Reasonably focused, some prioritization visible.</td>
-              <td>Scope is a bit too broad, priorities are unclear.</td>
-              <td>Scope is unrealistic and too scattered.</td>
-            </tr>
-            <tr>
-              <td><strong>Reflection and Communication</strong></td>
-              <td>Explains the project clearly, justifies decisions well, reflects honestly, shows strong ownership.</td>
-              <td>Explains the project clearly enough, gives reasonable reasons, includes some reflection.</td>
-              <td>Describes the project but struggles to explain why, reflection is shallow.</td>
-              <td>Cannot clearly explain decisions, reflection is weak or missing.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section id="starter-webpage" class="section">
+      <!-- STARTER CODE -->
+      <section id="starter-code" class="section">
         <h2>Starter Code</h2>
-        <p class="lead">A minimal working codebase students can run, understand, and customize. Includes frontend, backend, and RAG pipeline.</p>
+        <p class="lead">A minimal working codebase students can run, understand, and customize after completing the HCI design process.</p>
 
         <div class="callout good">
           <strong>Download:</strong> The complete starter code is in the <a href="https://github.com/hbycwyh2008/AI-School-Handbook-Studio/tree/main/starter-code" target="_blank" style="color:var(--accent-2); text-decoration:underline;">starter-code/</a> folder of this repository.
@@ -1281,20 +1169,20 @@
         <div class="grid-2" style="margin-top:14px;">
           <div class="card"><strong>Frontend</strong>HTML + Bootstrap 5 + Vanilla JavaScript</div>
           <div class="card"><strong>Backend</strong>Node.js + Express</div>
-          <div class="card"><strong>Vector Database</strong>ChromaDB — stores handbook chunks and searches by meaning</div>
-          <div class="card"><strong>AI</strong>OpenAI API — GPT-4o-mini for answers, text-embedding-3-small for vectors</div>
+          <div class="card"><strong>Vector Database</strong>ChromaDB &mdash; stores handbook chunks and searches by meaning</div>
+          <div class="card"><strong>AI</strong>OpenAI API &mdash; GPT-4o-mini for answers, text-embedding-3-small for vectors</div>
         </div>
 
         <h3>File Structure</h3>
         <div class="card" style="margin-top:14px; font-family: monospace; font-size: 14px; line-height: 2;">
           <strong style="font-family: inherit;">starter-code/</strong>
           <p style="margin:4px 0 0 16px;">
-            public/index.html &nbsp;← Frontend page (Bootstrap UI)<br>
-            public/app.js &nbsp;&nbsp;&nbsp;&nbsp;← Frontend logic (Vanilla JS, fetch API)<br>
-            server.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Express server + /api/ingest + /api/ask<br>
-            ingest.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Script to chunk a .txt handbook into ChromaDB<br>
-            package.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Dependencies<br>
-            .env.example &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Environment variables template
+            public/index.html &nbsp;&larr; Frontend page (Bootstrap UI)<br>
+            public/app.js &nbsp;&nbsp;&nbsp;&nbsp;&larr; Frontend logic (Vanilla JS, fetch API)<br>
+            server.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; Express server + /api/ingest + /api/ask<br>
+            ingest.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; Script to chunk a .txt handbook into ChromaDB<br>
+            package.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; Dependencies<br>
+            .env.example &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&larr; Environment variables template
           </p>
         </div>
 
@@ -1316,56 +1204,25 @@
           <div class="check-item"><span><strong>1.</strong> Install <a href="https://nodejs.org" target="_blank" style="color:var(--accent-2)">Node.js</a> and <a href="https://python.org" target="_blank" style="color:var(--accent-2)">Python</a></span></div>
           <div class="check-item"><span><strong>2.</strong> Install ChromaDB: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">pip install chromadb</code></span></div>
           <div class="check-item"><span><strong>3.</strong> Start ChromaDB: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">chroma run --path ./chroma_data</code></span></div>
-          <div class="check-item"><span><strong>4.</strong> In a new terminal: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">cd starter-code && npm install && cp .env.example .env</code> → edit .env with your OpenAI key</span></div>
+          <div class="check-item"><span><strong>4.</strong> In a new terminal: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">cd starter-code && npm install && cp .env.example .env</code> &rarr; edit .env with your OpenAI key</span></div>
           <div class="check-item"><span><strong>5.</strong> Load handbook: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">node ingest.js handbook.txt</code></span></div>
-          <div class="check-item"><span><strong>6.</strong> Start server: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">npm start</code> → open <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">http://localhost:3000</code></span></div>
+          <div class="check-item"><span><strong>6.</strong> Start server: <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">npm start</code> &rarr; open <code style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:6px;">http://localhost:3000</code></span></div>
         </div>
 
-        <h3>What Students Should Customize</h3>
         <div class="callout warn">
-          <strong>This is a shell, not a finished product.</strong> Students must make their own decisions about:
-          <ul>
-            <li>Page design and layout for their target user</li>
-            <li>How to split the handbook into smarter chunks (detect sections / headers)</li>
-            <li>How to display citations and source information</li>
-            <li>How to handle "I don't know" answers</li>
-            <li>Error handling and loading states</li>
-            <li>Final deployment to Railway, Render, or another platform</li>
-          </ul>
+          <strong>This is a shell, not a finished product.</strong> Students must make their own decisions about page design, chunk strategy, citation display, "I don't know" handling, error states, and deployment.
         </div>
       </section>
 
-      <section id="sample-ai-response" class="section">
-        <h2>Sample AI Response Format</h2>
-        <p class="lead">A clear answer + citation/source structure students can build around.</p>
-        <h3>Example Response Structure</h3>
-        <div class="card" style="margin-top:14px; font-family: monospace; font-size: 14px; line-height: 1.8;">
-          <strong>User Question</strong>
-          <p>"What time does the school library close on Fridays?"</p>
-          <strong>AI Answer</strong>
-          <p>"The school library closes at 4:30 PM on Fridays during the regular school year."</p>
-          <strong>Source / Citation</strong>
-          <p>Source: Student Handbook 2025–2026, Section 5.2 — Library Hours<br>
-          Page: 23<br>
-          Confidence: High — direct match found in handbook text.</p>
-        </div>
-        <h3>Key Elements in Every Response</h3>
-        <div class="grid-3" style="margin-top:14px;">
-          <div class="card"><strong>Answer</strong>A direct, concise response to the user's question.</div>
-          <div class="card"><strong>Source</strong>The specific handbook section, page, or document the answer came from.</div>
-          <div class="card"><strong>Confidence Signal</strong>An indication of how closely the retrieved content matched the question.</div>
-        </div>
-        <div class="callout good"><strong>Design principle:</strong> Users should always be able to verify where the answer came from and judge whether to trust it.</div>
-      </section>
-
+      <!-- RAG LESSONS -->
       <section id="rag-lessons" class="section">
         <h2>Mini-Lessons on RAG and ChromaDB</h2>
-        <p class="lead">Shared concept teaching so students do not have to guess the system logic.</p>
+        <p class="lead">Shared concept teaching so students understand the system logic behind the handbook assistant.</p>
 
         <h3>What is RAG?</h3>
         <p>RAG stands for <strong>Retrieval-Augmented Generation</strong>. Instead of relying only on a language model's memory, RAG first retrieves relevant documents from a knowledge base, then uses them to generate a grounded answer.</p>
         <div class="grid-3" style="margin-top:14px;">
-          <div class="card"><strong>1. Retrieve</strong>Search a document database (e.g. the school handbook) for chunks of text most relevant to the user's question.</div>
+          <div class="card"><strong>1. Retrieve</strong>Search a document database (e.g. the school handbook) for chunks most relevant to the user's question.</div>
           <div class="card"><strong>2. Augment</strong>Pass the retrieved text to the language model as context, alongside the user's question.</div>
           <div class="card"><strong>3. Generate</strong>The model produces an answer grounded in the retrieved text, not just its general training data.</div>
         </div>
@@ -1373,7 +1230,7 @@
         <h3>Why RAG Fits the School Handbook</h3>
         <div class="callout">
           <ul>
-            <li>Handbook information is specific and changes each year — a general LLM would not know it.</li>
+            <li>Handbook information is specific and changes each year &mdash; a general LLM would not know it.</li>
             <li>RAG keeps answers grounded in real school documents, reducing hallucination.</li>
             <li>RAG naturally supports citation: we know exactly which document chunk the answer came from.</li>
           </ul>
@@ -1383,29 +1240,32 @@
         <p>ChromaDB is an open-source <strong>vector database</strong>. It stores text chunks as numerical embeddings so you can find semantically similar content quickly.</p>
         <div class="grid-2" style="margin-top:14px;">
           <div class="card"><strong>Embedding</strong>Each handbook chunk is converted into a vector (a list of numbers) that captures its meaning.</div>
-          <div class="card"><strong>Similarity Search</strong>When a user asks a question, the question is also embedded. ChromaDB finds the chunks whose vectors are closest — meaning most relevant.</div>
+          <div class="card"><strong>Similarity Search</strong>When a user asks a question, the question is also embedded. ChromaDB finds the chunks whose vectors are closest &mdash; most relevant.</div>
         </div>
 
         <h3>Why Metadata Matters</h3>
-        <p>Each chunk stored in ChromaDB can carry metadata such as section title, page number, and document name. This metadata is what powers the <strong>citation and source display</strong> in the final product.</p>
-        <div class="callout good"><strong>Key takeaway:</strong> RAG = Retrieve relevant chunks → Feed them to the AI → Generate a grounded, citable answer.</div>
+        <p>Each chunk stored in ChromaDB can carry metadata such as section title, page number, and document name. This metadata powers the <strong>citation and source display</strong> in the final product.</p>
+        <div class="callout good"><strong>Key takeaway:</strong> RAG = Retrieve relevant chunks &rarr; Feed them to the AI &rarr; Generate a grounded, citable answer.</div>
       </section>
 
+      <!-- TEACHER PACK -->
       <section id="teacher-pack" class="section">
-        <h2>Recommended Teacher Packet</h2>
-        <p class="lead">These are the core materials to prepare before launch.</p>
+        <h2>Teacher Pack</h2>
+        <p class="lead">Core materials to prepare before launch.</p>
         <div class="grid-2">
-          <a class="card card-link" href="#overview"><strong>1. Project Brief</strong>Explains theme, required stages, deliverables, scope expectations, and final presentation expectations.</a>
-          <a class="card card-link" href="#starter-webpage"><strong>2. Starter Code</strong>A minimal working codebase (Express + ChromaDB + OpenAI) students can run and customize.</a>
-          <a class="card card-link" href="#sample-ai-response"><strong>3. Sample AI Response Format</strong>A clear answer + citation/source structure students can build around.</a>
-          <a class="card card-link" href="#rag-lessons"><strong>4. Mini-Lessons on RAG and ChromaDB</strong>Shared concept teaching so students do not have to guess the system logic.</a>
-          <a class="card card-link" href="#checkpoints"><strong>5. Checkpoint Forms</strong>Gate-based review to manage scope and quality.</a>
-          <a class="card card-link" href="#rubric"><strong>6. Teacher Rubric</strong>Assessment aligned with research, design, testing, implementation, and reflection.</a>
-          <a class="card card-link" href="#student-checklist"><strong>7. Student Master Checklist</strong>Helps students stay on track and self-monitor progress.</a>
-          <a class="card card-link" href="#weeks"><strong>8. 8-Week Teaching Plan</strong>The pacing guide for the entire studio process.</a>
+          <a class="card card-link" href="#overview"><strong>1. Goal &amp; Task Overview</strong>The 5-task HCI process, learning objectives, and final expectations.</a>
+          <a class="card card-link" href="#workflow"><strong>2. 4-Week Workflow</strong>Pacing guide mapping each week to the HCI task sequence.</a>
+          <a class="card card-link" href="#reports"><strong>3. Weekly Report Format</strong>JDF template in Overleaf for structured student reports.</a>
+          <a class="card card-link" href="#templates"><strong>4. Student Templates</strong>Ready-to-use templates matching each task's output requirements.</a>
+          <a class="card card-link" href="#criteria"><strong>5. Evaluation Criteria</strong>Assessment dimensions aligned with each HCI task.</a>
+          <a class="card card-link" href="#starter-code"><strong>6. Starter Code</strong>Minimal working codebase (Express + ChromaDB + OpenAI) for the build phase.</a>
+          <a class="card card-link" href="#rag-lessons"><strong>7. RAG &amp; ChromaDB Lessons</strong>Concept teaching for AI/retrieval system understanding.</a>
         </div>
-        <div class="callout"><strong>Recommended teaching principle:</strong> Do not remove difficulty by doing the work for students. Remove unnecessary barriers so students can own the important work.</div>
+        <div class="callout" style="margin-top:16px;">
+          <strong>Teaching principle:</strong> Do not start with coding. Guide students through the full HCI process &mdash; needfinding, data collection, prototyping, evaluation, iteration &mdash; before any implementation.
+        </div>
       </section>
+
     </main>
   </div>
 
